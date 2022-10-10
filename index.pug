@@ -1,0 +1,320 @@
+div
+  section(style='width: 100%; font: 0.8em sans-serif;')
+    header
+      div(style='display: flex;')
+        div(style='display: flex; width: 50%;')
+          img(src='./images/juno.png' height='100px' alt='Juno Logo')
+        div(style='width: 50%;')
+          p(style='text-align: right; color:lightgray; margin-right:20px; font-weight: 500px; font-size: 15px;')
+            | Negative Report For #{testNameShort}
+    div
+      div(style='display: flex;')
+        div(style='width: 40%;')
+          p PATIENT DEMOGRAPHICS
+          div(style='display: flex;')
+            table(style='text-align: left; line-height: 2ch; font-size: 10px; width: 50%; background: #eeecd4; padding-left: 2px;')
+              tbody
+                tr
+                  th(style='font-weight: 600;') Patient Name:
+                  th(style='font-weight: 500;') #{patientName}
+                tr
+                  th(style='font-weight: 600;') Date of birth:
+                  th(style='font-weight: 500;') #{patientDob}
+                tr
+                  th(style='font-weight: 600;') Email:
+                  th(style='font-weight: 500;') #{patientEmail}
+                tr
+                  th(style='font-weight: 600;') Report date:
+                  th(style='font-weight: 500;') #{reportDate}
+                tr
+                  th(style='font-weight: 600;') Study performed:
+                  th(style='font-weight: 500;') #{testNameShort}
+            table(style='text-align: left; line-height: 2ch; font-size: 10px; width: 50%; background: #eeecd4; padding-left: 2px;')
+              tbody
+                tr
+                  th(style='font-weight: 600;') LMP:
+                  th(style='font-weight: 500;') #{patientLmpDate}
+                tr
+                  th(style='font-weight: 600;') Sample collection date:
+                  th(style='font-weight: 500;') #{patientSampleCollectionDate}
+                tr
+                  th(style='font-weight: 600;') GA at sample collection:
+                  th(style='font-weight: 500;') #{patientGA}
+                tr
+                  th(style='font-weight: 600;') Gestation:
+                  th(style='font-weight: 500;') #{patientGestationType}
+                tr
+                  th ####
+                  th ####
+        div(style='width: 60%; padding-left: 4px')
+          p ABOUT JUNO'S #{testNameExtended}:
+          p #{testDescription}
+      div(style='height: 150px; width: 100%; border: 1px solid black; margin-bottom: 15px;')
+        div(style='height: 20px; background:#a3859f; font-weight: 800; color: white;')
+          | FINAL RESULTS SUMMARY
+        div(style='display: flex; height: 90%;')
+          div(style='width: 33%; padding-left: 5px; padding-top: 15px;')
+            div(style='height: 30%;') Result
+            div(style='display: flex; flex-direction:column;')
+              span(style='font-weight: 800;') #{overallResultText}
+              img(src='#{overallResultGraphic}' height='40px' width='40px')
+          div(style='width: 33%; padding-left: 5px; padding-top: 15px;')
+            div(style='height: 30%;') Fetal Sex
+            div(style='display: flex; flex-direction:column;')
+              span(style='font-weight: 800;') #{fetalSexText}
+              img(src='#{overallSexGraphic}' height='40px' width='40px')
+          div(style='width: 33%; padding-left: 5px; padding-top: 15px;')
+            div(style='height: 30%;') Fetal Fraction
+            div(style='display: flex; flex-direction:column;')
+              span(style='font-weight: 800;') #{fetalFractionText}
+              img(src='#{fetalFractionGraphic}' height='40px' width='40px')
+      div(style='height: 275px; border: 1px solid black; margin-bottom: 15px;')
+        div(style='height: 20px; background:#a3859f; font-weight: 800; color: white;')
+          | CONDITIONS EVALUATED
+        div(style='display: flex; height: 90%; width: 100%;')
+          table(style='width: 100%;')
+            tbody
+              tr
+                td ####
+                td Post-test risk
+                td Interpretation
+                td ####
+              tr
+                td #{conditionOneTitle}
+                td #{conditionOneRisk}
+                td #{conditionOneInterpretationText}
+                td
+                  img(src='#{conditionOneGraphic}' height='50px')
+              tr
+                td #{conditionTwoTitle}
+                td #{conditionTwoRisk}
+                td #{conditionTwoInterpretationText}
+                td
+                  img(src='#{conditionTwoGraphic}' height='70px')
+              tr
+                td #{conditionThreeTitle}
+                td #{conditionThreeRisk}
+                td #{conditionThreeInterpretationText}
+                td
+                  img(src='#{conditionThreeGraphic}' height='90px')
+      div(style='height: 80px; border: 1px solid black; margin-bottom: 10px;')
+        div(style='height: 20px; background:#a3859f; font-weight: 800; color: white;')
+          | WHAT DOES THIS RESULT MEAN?
+        div(style='display: flex; height: 90%; width: 100%;')
+          p #{resultMeaningText}
+      div(style='height: 80px; margin-bottom: 15px;')
+        div(style='height: 20px; font-weight: 800; border-width: 1px 0px 1px 0px; border-style: solid; border-color: lightgray; color: gray;')
+          | SCREENING METHODS
+        div(style='display: flex; height: 90%; width: 100%;')
+          p
+            | Circulating cell-free DNA (ccfDNA) is purified from the plasma component of maternal blood. The
+            | extracted DNA is then
+            | converted into a whole genome DNA library for sequencing-based analysis of chromosomes 21, 18,
+            | and 13.
+      div(style='display: flex;')
+        span(style='width: 58%; margin-right: 20px; border-width: 1px 0px 0px 0px; border-style: solid; border-color: gray; line-height: 20px;')
+          | Lab
+          | Director Signature
+        span(style='width: 38%;border-width: 1px 0px 0px 0px; border-style: solid; border-color: gray; line-height: 20px;') Date
+    footer(style='display: flex; border-width: 1px 0px 1px 0px; border-style: solid; border-color: lightgray;')
+      div(style='width: 75%;')
+        p
+          strong Juno Diagnostics™:
+          |  #{junoAddress}
+          strong CLIA ID#:
+          | #{junoCLIAId};
+          strong Lab Director:
+          | #{junoLabDirectorName}
+        p
+          | This document contains private and confidential health information protected by state and federal
+          | law. If you have
+          | received this document in error, please call 858-201-7154.
+        div(style='display: flex;')
+          p #{patientName}, DOB #{patientDob}
+          p JUNO: #{testNameExtended}
+      div(style='width: 25%; display: flex; flex-direction: column;')
+        img(src='./images/juno.png' height='110px' width='230px' alt='Juno Logo')
+        span Page 1/2
+  section(style='width: 100%; font: 0.8em sans-serif; page-break-before: always;')
+    header
+      div(style='display: flex;')
+        div(style='display: flex;')
+          img(src='./images/juno.png' height='100px' alt='Juno Logo')
+        div
+          table(style='text-align: left; line-height: 2ch; font-size: 10px; background: #eeecd4; padding-left: 2px; margin-top: 25px;')
+            tbody
+              tr
+                th(style='font-weight: 600;') Patient Name:
+                th(style='font-weight: 500;') #{patientName}
+              tr
+                th(style='font-weight: 600;') Report date:
+                th(style='font-weight: 500;') #{reportDate}
+              tr
+                th(style='font-weight: 600;') Study performed:
+                th(style='font-weight: 500;') #{testNameShort}
+        div(style='width: 70%;')
+          p(style='text-align: right; color:lightgray; margin-right:20px; font-weight: 500px; font-size: 15px;')
+            | Negative Report For #{testNameShort}
+    div
+      div(style='height: 70px; margin-bottom: 15px;')
+        div(style='height: 20px; font-weight: 800; border-width: 1px 0px 1px 0px; border-style: solid; border-color: lightgray; color: gray;')
+          | SCREENING PERFORMANCE
+        div(style='display: flex; height: 90%; width: 100%;')
+          p
+            | Juno's Hazel™ laboratory developed test has been evaluated for clinical performance in multiple
+            | studies, inclusive of
+            | >1600 total venous and capillary samples. Based on this data, expected performance with at-home
+            | self-collection is as
+            | follows:
+      div(style='height: 120px; margin-bottom: 15px;')
+        div(style='display: flex; height: 100%; width: 100%;')
+          table(style='width: 100%; border-spacing: 10px;')
+            tbody
+              tr
+                td  
+                td(style='background: lightgray;') SENSITIVITY (95% CI)
+                td(style='background: lightgray;') SPECIFICITY (95% CI)
+              tr
+                td(style='background: lightgray;') Trisomy 21
+                td(style='background: lightgray;') >99% (95%-100%)
+                td(style='background: lightgray;') >99.9% (99%-100%)
+              tr
+                td(style='background: lightgray;') Trisomy 18
+                td(style='background: lightgray;') >99% (94%-100%)
+                td(style='background: lightgray;') >99.9% (99%-100%)
+              tr
+                td(style='background: lightgray;') Trisomy 13
+                td(style='background: lightgray;') >99% (79%-100%)
+                td(style='background: lightgray;') >99.9% (99%-100%)
+      div(style='height: 380px; margin-bottom: 15px;')
+        div(style='height: 20px; font-weight: 800; border-width: 1px 0px 1px 0px; border-style: solid; border-color: lightgray; color: gray;')
+          | SCREENING LIMITATIONS
+        div(style='height: 100%; width: 100%;')
+          p
+            | This screen is for screening purposes only, and is not diagnostic. While the results of these
+            | screens are highly
+            | accurate, discordant results, including inaccurate fetal sex prediction, may occur due to
+            | placental, maternal, or fetal
+            | mosaicism or neoplasm; vanishing twin; prior maternal organ transplant; or other causes. Sex
+            | chromosomal aneuploidies
+            | are not reportable for known multiple gestations.
+          p
+            | The screen does not replace the accuracy and precision of prenatal diagnosis with CVS or
+            | amniocentesis. A patient with a
+            | positive screening result should receive genetic counseling and be offered invasive prenatal
+            | diagnosis for confirmation
+            | of test results. A negative result does not ensure an unaffected pregnancy nor does it exclude
+            | the possibility of other
+            | chromosomal abnormalities or birth defects which are not a part of this screening evaluation. An
+            | uninformative result
+            | may be reported, the causes of which may include but are not limited to insufficient sequencing
+            | coverage, noise or
+            | artifacts in the region, amplification or sequencing bias, or insufficient fetal representation.
+            | The ability to report
+            | results may be impacted by maternal BMI, maternal weight and maternal autoimmune disorders.
+          p
+            | Screening for whole chromosome abnormalities (including sex chromosomes) and for sub-chromosomal
+            | abnormalities could
+            | lead to the potential discovery of both fetal and maternal genomic abnormalities that could have
+            | major, minor, or no,
+            | clinical significance. Evaluating the significance of a positive or a non-reportable result may
+            | involve both diagnostic
+            | testing and additional studies on the pregnant person. Such investigations may lead to a
+            | diagnosis of maternal
+            | chromosomal or sub-chromosomal abnormalities, which on occasion may be associated with benign or
+            | malignant maternal
+            | neoplasms.
+          p
+            | This screen may not accurately identify fetal triploidy, balanced rearrangements, or the precise
+            | location of
+            | sub-chromosomal duplications or deletions; these may be detected by prenatal diagnosis with
+            | karyotype and
+            | SNP-microarray. Cell-free DNA screening is not intended to identify pregnancies at risk for
+            | neural tube defects or
+            | ventral wall defects; these may be detected by prenatal ultrasound evaluation.
+          p
+            | The results of this screening, including the benefits and limitations, should be discussed with a
+            | qualified healthcare
+            | provider. Pregnancy management decisions, including termination of the pregnancy, should not be
+            | based on the results of
+            | these screens alone. The healthcare provider is responsible for the use of this information in
+            | the management of their
+            | patient.
+      div(style='height: 130px; margin-bottom: 15px;')
+        div(style='height: 20px; font-weight: 800; border-width: 1px 0px 0px 0px; border-style: solid; border-color: lightgray; color: gray;')
+          | REFERENCES
+        div(style='display: flex; height: 90%; width: 100%; font-size: 8px;')
+          ol
+            li
+              | Palomaki GE, Deciu C, Kloza EM, et al. DNA sequencing of maternal plasma reliably identifies
+              | trisomy 18 and
+              | trisomy 13 as well as Down syndrome: an international collaborative study. Genet Med.
+              | 2012;14(3):296-305.
+              | doi:10.1038/gim.2011.73
+            li
+              | Mazloom AR, Džakula Ž, Oeth P, et al. Noninvasive prenatal detection of sex chromosomal
+              | aneuploidies by sequencing circulating cell-free DNA from maternal plasma. Prenat Diagn.
+              | 2013;33(6):591-597.
+              | doi:10.1002/pd.4127
+            li
+              | Ehrich M, Tynan J, Mazloom A, et al. Genome-wide cfDNA screening: clinical laboratory
+              | experience
+              | with the first 10,000 cases. Genet Med. 2017;19(12):1332-1337. doi:10.1038/gim.2017.56
+            li
+              | American College of
+              | Obstetricians and Gynecologists Committee on Genetics. Committee Opinion No. 545:
+              | Noninvasive prenatal testing for fetal
+              | aneuploidy. Obstet Gynecol. 2012;120(6):1532-1534. doi:10.1097/01.AOG.0000423819.85283.f4
+            li
+              | Gregg AR, Skotko BG,
+              | Benkendorf JL, et al. Noninvasive prenatal screening for fetal aneuploidy, 2016 update: a
+              | position statement of the
+              | American College of Medical Genetics and Genomics. Genet Med. 2016;18(10):1056-1065.
+              | doi:10.1038/gim.2016.97
+            li
+              | American
+              | College of Obstetricians and Gynecologists' Committee on Practice Bulletins—Obstetrics;
+              | Committee on Genetics; Society
+              | for Maternal-Fetal Medicine. Screening for Fetal Chromosomal Abnormalities: ACOG Practice
+              | Bulletin, Number 226. Obstet
+              | Gynecol. 2020;136(4):e48-e69. doi:10.1097/AOG.0000000000004084
+            li
+              | Kim SK, Hannum G, Geis J, et al. Determination of fetal
+              | DNA fraction from the plasma of pregnant women using sequence read counts. Prenat Diagn.
+              | 2015;35(8):810-815.
+              | doi:10.1002/pd.4615
+            li
+              | Dharajiya NG, Grosu DS, Farkas DH, et al. Incidental Detection of Maternal Neoplasia in
+              | Noninvasive Prenatal Testing. Clin Chem. 2018;64(2):329-335.
+              | doi:10.1373/clinchem.2017.277517
+      div(style='height: 80px; border-width: 1px 0px 1px 0px; border-style: solid; border-color: lightgray; font-size: 10px;')
+        p(style='line-height: 10px;')
+          | Disclaimer:This laboratory study was developed and its performance
+          | characteristics determined by Juno Diagnostics.
+          | Juno's laboratory is certified under the Clinical Laboratory Improvement Amendments (CLIA) as
+          | qualified to perform high
+          | complexity clinical laboratory testing. The screen has not been cleared or approved by the Food and
+          | Drug Administration.
+          | Clinical use of high complexity LDTs is regulated by the Center for Medicare and Medicaid Services
+          | (CMS) under CLIA.
+    footer(style='display: flex; border-width: 1px 0px 1px 0px; border-style: solid; border-color: lightgray;')
+      div(style='width: 75%;')
+        p
+          strong Juno Diagnostics™:
+          |  #{junoAddress}
+          strong CLIA ID#:
+          | #{junoCLIAId};
+          strong
+            | Lab
+            | Director:
+          | #{junoLabDirectorName}
+        p
+          | This document contains private and confidential health information protected by state and federal
+          | law. If you have
+          | received this document in error, please call 858-201-7154.
+        div(style='display: flex;')
+          p #{patientName}, DOB #{patientDob}
+          p JUNO: #{testNameExtended}
+      div(style='width: 25%; display: flex; flex-direction: column;')
+        img(src='./images/juno.png' height='110px' width='230px' alt='Juno Logo')
+        span Page 2/2
