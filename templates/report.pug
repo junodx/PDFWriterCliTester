@@ -2,12 +2,12 @@ doctype transitional
 html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
   head
     meta(http-equiv='Content-Type' content='text/html; charset=utf-8')
-    title file_1665070562435
+    title #{productName}
     style(type='text/css').
       * {
-      margin: 0;
-      padding: 0;
-      text-indent: 0;
+      margin: 0px;
+      padding: 0px;
+      text-indent: 0px;
       }
       .s1 {
       color: #8A727D;
@@ -55,7 +55,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
       font-style: normal;
       font-weight: normal;
       text-decoration: none;
-      font-size: 8pt;
+      font-size: 7pt;
       }
       .s7 {
       color: #F8F2E7;
@@ -71,7 +71,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
       font-style: normal;
       font-weight: normal;
       text-decoration: none;
-      font-size: 10pt;
+      font-size: 9pt;
       }
       .s9 {
       color: #231F20;
@@ -246,7 +246,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
       overflow: visible;
       }
   body
-    div(style='margin: 40px;')
+    div(style='margin: -5px;')
       p(style='text-indent: 0pt;text-align: left;')
         span
       table(border='0' cellspacing='0' cellpadding='0')
@@ -259,12 +259,11 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
       p(style='text-indent: 0pt;text-align: left;')
       p(style='text-indent: 0pt;text-align: left;')
       p.s1(style='padding-top: 4pt;padding-left: 328pt;text-indent: 0pt;text-align: left;')
-        | Example: Negative
-        | Result for #{productName}
+        | #{productName}
       p(style='text-indent: 0pt;text-align: left;')
         br
-      div(style='display: flex')
-        table(style='border-collapse:collapse' cellspacing='0')
+      div
+        table(style='border-collapse:collapse; float: left; width: 46%; margin: 10px;' cellspacing='0')
           tbody
             tr(style='height:14pt')
               td(style='width:252pt' colspan='4')
@@ -287,9 +286,9 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
               td(style='width:50pt;border-right-style:solid;border-right-width:1pt;border-right-color:#FFFFFF' bgcolor='#F8F2E6')
                 p(style='text-indent: 0pt;text-align: left;')
                   br
-                p.s3(style='padding-left: 2pt;padding-right: 47pt;text-indent: 0pt;line-height: 123%;text-align: left;')
+                p.s3(style='padding-left: 2pt;padding-right: 27pt;text-indent: 0pt;line-height: 123%;text-align: left;')
                   | #{patientName}
-                p.s3(style='padding-left: 2pt;padding-right: 47pt;text-indent: 0pt;line-height: 123%;text-align: left;')
+                p.s3(style='padding-left: 2pt;padding-right: 27pt;text-indent: 0pt;line-height: 123%;text-align: left;')
                   | #{patientDob}
                 p.s3(style='padding-left: 2pt;text-indent: 0pt;line-height: 123%;text-align: left;')
                   a.s4(href='mailto:#{patientEmail}' target='_blank') #{patientEmail}
@@ -319,15 +318,15 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
                   | #{patientGA}
                 p.s3(style='padding-top: 1pt;padding-left: 3pt;text-indent: 0pt;text-align: left;')
                   | #{patientGestiationType}
-        table(style='border-collapse:collapse' cellspacing='0')
+        table(style='border-collapse:collapse; float: left; width: 50%; margin: 10px;' cellspacing='0')
           tbody
             tr(style='height:15pt')
               td(style='width:307pt')
-                p.s5(style='padding-left: 2pt;text-indent: 0pt;text-align: left;')
+                p.s2(style='padding-left: 1pt;text-indent: 0pt;text-align: left;')
                   | #{testNameExtended}
             tr(style='height:61pt')
               td(style='width:307pt')
-                p.s6(style='padding-top: 1pt;padding-left: 2pt;padding-right: 3pt;text-indent: 0pt;line-height: 10pt;text-align: left;')
+                p.s6(style='padding-top: 1pt;padding-left: 1pt;padding-right: 1pt;text-indent: 0pt;line-height: 8pt;text-align: justify;')
                   | #{testDescription}
       p(style='padding-left: 7pt;text-indent: 0pt;text-align: left;')
         span(style=' color: black; font-family:"Times New Roman", serif; font-style: normal; font-weight: normal; text-decoration: none; font-size: 10pt; vertical-align: 1pt;')
@@ -352,15 +351,15 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
             td(style='width:127pt;border-left-style:solid;border-left-width:1pt;border-left-color:#8A727D;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#8A727D; text-align: center;')
               p.s9(style='padding-top: 7pt;text-indent: 0pt; text-align: center;')
                 | #{overallResultText}
-              img(src='./ci_21.png')
+              img(width='50px' src='./templates/assets/square-check.svg')
             td(style='width:185pt;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#8A727D; text-align: center;')
               p.s9(style='padding-top: 7pt;text-indent: 0pt; text-align: center;')
                 | #{fetalSexText}
-              img(src='./ci_21.png')
+              img(width='50px' src='./templates/assets/venus-light.svg')
             td(style='width:254pt;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#8A727D;border-right-style:solid;border-right-width:1pt;border-right-color:#8A727D; text-align: center;')
               p.s9(style='padding-top: 7pt;text-indent: 0pt; text-align: center;')
                 | #{fetalFractionText}
-              img(src='./ci_21.png')
+              img(width='50px' src='./templates/assets/dna-light.svg')
       p(style='text-indent: 0pt;text-align: left;')
         br
       table(style='border-collapse:collapse;margin-left:7.7492pt' cellspacing='0')
@@ -372,91 +371,91 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
           tr(style='height:73pt')
             td(style='width:109pt;border-left-style:solid;border-left-width:1pt;border-left-color:#8D737D;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#8D737D')
               p.s21(style='padding-top: 1pt;padding-left: 9pt;text-indent: 0pt;line-height: 41pt;text-align: left;')
-                | #{predictivePositiveValue}
+                | #{ppvPercentage}
               p.s8(style='padding-left: 9pt;text-indent: 0pt;line-height: 10pt;text-align: left;')
                 | Age:
-                | #{patientAge}
+                | #{ppvPatientAge}
               p.s8(style='padding-top: 1pt;padding-left: 9pt;text-indent: 0pt;text-align: left;')
                 | GA:
-                | #{gaValue}
+                | #{ppvPatientGA}
             td(style='width:457pt;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#8D737D;border-right-style:solid;border-right-width:1pt;border-right-color:#8D737D')
               p.s8(style='padding-top: 7pt;padding-left: 16pt;padding-right: 19pt;text-indent: 0pt;text-align: left;')
-                | #{predictivePositveText}
+                | #{ppvExplanation}
       p(style='text-indent: 0pt;text-align: left;')
         br
-      table(style='border-collapse:collapse;margin-left:7.375pt; border-style:solid;border-width:1pt;border-color:#8D737D; width: 10px;' cellspacing='0')
+      table(style='border-collapse:collapse;margin-left:7.375pt; border-style:solid;border-width:1pt;border-color:#8D737D; width: 100%;' cellspacing='0')
         tbody
           tr(style='height:19pt')
             td(style='width:567pt' colspan='4' bgcolor='#8A727D')
               p.s7(style='padding-top: 2pt;padding-left: 5pt;text-indent: 0pt;text-align: left;')
                 | #{CONDITIONS_EVALUATED_HEADER}
           tr(style='height:32pt; border-left-color:#8D737D')
-            td(style='width:97pt; ')
+            td(style='width:25%; ')
               p(style='text-indent: 0pt;text-align: left;')
                 br
-            td(style='width:135pt')
+            td(style='width:25%')
               p.s8(style='padding-top: 6pt;padding-left: 33pt;text-indent: 0pt;text-align: left;')
                 | #{POST_TEST_RISK}
-            td(style='width:226pt')
+            td(style='width:25%')
               p.s8(style='padding-top: 6pt;padding-left: 49pt;text-indent: 0pt;text-align: left;')
                 | #{INTERPRETATION}
-            td(style='width:109pt;')
+            td(style='width:25%;')
               p(style='text-indent: 0pt;text-align: left;')
                 br
           tr(style='height:52pt;  border-left-color:#8D737D;')
-            td(style='widthh:97pt; ')
-              p.s10(style='padding-top: 12pt;padding-left: 9pt;text-indent: 0pt;text-align: left;')
-                | #{conditionOneTitle}
-            td(style='widthh:135pt')
-              p.s10(style='padding-top: 12pt;padding-left: 33pt;text-indent: 0pt;text-align: left;')
-                | #{conditionOneRisk}
-            td(style='widthh:226pt')
-              p.s10(style='padding-top: 12pt;padding-left: 49pt;text-indent: 0pt;text-align: left;')
-                | #{conditionOneInterpretationText}
-            td(style='widthh:109pt;border-right-style:solid;border-right-width:1pt;border-right-color:#8D737D')
-              p(style='text-indent: 0pt;text-align: left;')
+            td(style='width:25%; ')
+              p.s10(style='padding-top: 12pt;padding-left: 9pt;text-indent: 0pt;text-align: left;font-size: 10pt;')
+                | #{condition1Title}
+            td(style='width:25%')
+              p.s10(style='padding-top: 12pt;padding-left: 33pt;text-indent: 0pt;text-align: left;font-size: 10pt;')
+                | #{condition1Risk}
+            td(style='width:25%')
+              p.s10(style='padding-top: 12pt;padding-left: 49pt;text-indent: 0pt;text-align: left;font-size: 10pt;')
+                | #{condition1InterpretationText}
+            td(style='width:25%;border-right-style:solid;border-right-width:1pt;border-right-color:#8D737D')
+              img(width='50px' src='#{condition1Icon}')
                 br
               p(style='padding-left: 54pt;text-indent: 0pt;text-align: left;')
               p.s8(style='padding-right: 44pt;text-indent: 0pt;text-align: right;') 21
           tr(style='height:52pt')
-            td(style='widthh:97pt; ')
+            td(style='width:25%;')
               p(style='text-indent: 0pt;text-align: left;')
                 br
-              p.s10(style='padding-left: 9pt;text-indent: 0pt;text-align: left;')
-                | #{conditionTwoTitle}
-            td(style='widthh:135pt')
+              p.s10(style='padding-left: 9pt;text-indent: 0pt;text-align: left; font-size: 10pt;')
+                | #{condition2Title}
+            td(style='width:25%')
               p(style='text-indent: 0pt;text-align: left;')
                 br
-              p.s10(style='padding-left: 33pt;text-indent: 0pt;text-align: left;')
-                | #{conditionTwoRisk}
-            td(style='widthh:226pt')
+              p.s10(style='padding-left: 33pt;text-indent: 0pt;text-align: left;font-size: 10pt;')
+                | #{condition2Risk}
+            td(style='width:25%')
               p(style='text-indent: 0pt;text-align: left;')
                 br
-              p.s10(style='padding-left: 49pt;text-indent: 0pt;text-align: left;')
-                | #{conditionTwoInterpretationText}
-            td(style='widthh:109pt;')
-              p(style='text-indent: 0pt;text-align: left;')
+              p.s10(style='padding-left: 49pt;text-indent: 0pt;text-align: left;font-size: 10pt;')
+                | #{condition2InterpretationText}
+            td(style='width:25%;')
+              img(width='50px' src='#{condition2Icon}')
                 br
               p(style='padding-left: 54pt;text-indent: 0pt;text-align: left;')
               p.s8(style='padding-right: 44pt;text-indent: 0pt;text-align: right;') 18
           tr(style='height:52pt; border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#8D737D')
-            td(style='widthh:97pt;')
+            td(style='width:25%;')
               p(style='text-indent: 0pt;text-align: left;')
                 br
-              p.s10(style='padding-left: 9pt;text-indent: 0pt;text-align: left;')
-                | #{conditionThreeTitle}
-            td(style='widthh:135pt;')
+              p.s10(style='padding-left: 9pt;text-indent: 0pt;text-align: left;font-size: 10pt;')
+                | #{condition3Title}
+            td(style='width:25%;')
               p(style='text-indent: 0pt;text-align: left;')
                 br
-              p.s10(style='padding-left: 33pt;text-indent: 0pt;text-align: left;')
-                | #{conditionThreeRisk}
-            td(style='widthh:226pt;')
+              p.s10(style='padding-left: 33pt;text-indent: 0pt;text-align: left;font-size: 10pt;')
+                | #{condition3Risk}
+            td(style='width:25%;')
               p(style='text-indent: 0pt;text-align: left;')
                 br
-              p.s10(style='padding-left: 49pt;text-indent: 0pt;text-align: left;')
-                | #{conditionThreeInterpretationText}
-            td(style='widthh:109pt;')
-              p(style='text-indent: 0pt;text-align: left;')
+              p.s10(style='padding-left: 49pt;text-indent: 0pt;text-align: left;font-size: 10pt;')
+                | #{condition3InterpretationText}
+            td(style='width:25%;')
+              img(width='50px' src='#{condition3Icon}')
                 br
               p(style='padding-left: 54pt;text-indent: 0pt;text-align: left;')
               p.s8(style='padding-right: 44pt;text-indent: 0pt;text-align: right;') 13
@@ -488,16 +487,16 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
       p(style='text-indent: 0pt;text-align: left;')
         br
       p.s13(style='padding-left: 7pt;text-indent: 0pt;line-height: 1pt;text-align: left;')  
-      div(style='display: flex; justify-content: space-around;')
-        p.s14(style='padding-top: 1pt;padding-left: 7pt;text-indent: 0pt;text-align: left; width: 48%; margin-top: 10px; border-top: black; border-top-width: 1px; border-top-style: solid; padding-right: 2px;')
+      div(style='margin-top: 10pt')
+        p.s14(style='padding-top: 1pt;padding-left: 7pt;text-indent: 0pt;text-align: left; width: 48%; margin-top: 10px; border-top: black; border-top-width: 1px; border-top-style: solid; padding-right: 2px; float: left; margin: 2pt;')
           | Lab
           | Director
           | Signature
-        p.s14(style='padding-top: 1pt;padding-left: 7pt;text-indent: 0pt;text-align: left; width: 48%; margin-top: 10px; border-top: black; border-top-width: 1px; border-top-style: solid; padding-left: 2px;')
+        p.s14(style='padding-top: 1pt;padding-left: 7pt;text-indent: 0pt;text-align: left; width: 48%; margin-top: 10px; border-top: black; border-top-width: 1px; border-top-style: solid; padding-left: 2px; float: left; margin: 2pt;')
           | Signature
           | Date
       div(style='page-break-inside:avoid;page-break-after:always')
-        table(border='0' cellspacing='0' cellpadding='0' style='width: 100%; padding: 16pt 0pt; ')
+        table(border='0' cellspacing='0' cellpadding='0' style='width: 100%; padding-top: 16pt; ')
           tbody
             tr
               td
@@ -513,15 +512,18 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
                   | This document contains private and confidential health information protected by state
                   | and federal law. If you have received this document in error, please call 858-201-7154.
               td
-                img(width='86' height='30' src='data:image/png;base64,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')
-            tr
+                p
               td
-                div(style='display: flex; justify-content: space-between;')
-                  p(style='    font-size: 7pt;color: #8A727D;') JANE DOE, DOB 6/24/1991
-                  p(style='    font-size: 7pt;color: #8A727D;')
-                    | JUNO: HAZEL™ NON-INVASIVE PRENATAL SCREEN
-                    | BASIC
-                  p(style='    font-size: 7pt;')  
+                img(width='86' height='30' src='data:image/png;base64,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')
+        table(style='padding-bottom: 16pt; width: 100%;')
+          tbody
+            tr
+              td(style='width: 200pt')
+                p(style='    font-size: 7pt;color: #8A727D;') #{patientName}, DOB #{patientDob}
+              td
+                p(style='    font-size: 7pt;color: #8A727D;')  #{testName}
+              td
+                p(style='    font-size: 7pt;')  
               td
                 p Page 1 of 2
       p(style='text-indent: 0pt;text-align: left;')
@@ -560,7 +562,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
             tr
               td(style='width:423pt;border-left-style:solid;border-left-width:1pt;border-left-color:#FFFFFF')
                 p.s3(style='padding-left: 3pt;text-indent: 0pt;line-height: 11pt;text-align: right;')
-                  span.s15 Example: Negative Result for Hazel NIPS Basic
+                  span.s15 | #{productName}
       p
       p.s16(style='width:567pt;border-top-style:solid;border-top-width:1pt; border-top-color:#BCBEC0; border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#BCBEC0;padding-top: 2pt;padding-left: 9pt;text-indent: 0pt;text-align: left;')
         span.h1
@@ -633,75 +635,74 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
           tr(style='height:314pt')
             td(style='width:572pt;border-top-style:solid;border-top-width:1pt;border-top-color:#BCBEC0;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#BCBEC0')
               p.s8(style='padding-top: 7pt;padding-left: 9pt;padding-right: 7pt;text-indent: 0pt;text-align: left;')
-                | #{screeningLimitaionsText1}
+                | #{screeningLimitationsText1}
               p(style='text-indent: 0pt;text-align: left;')
                 br
               p.s8(style='padding-left: 9pt;text-indent: 0pt;text-align: left;')
-                | #{screeningLimitaionsText2}
+                | #{screeningLimitationsText2}
               p(style='text-indent: 0pt;text-align: left;')
                 br
               p.s8(style='padding-left: 9pt;padding-right: 28pt;text-indent: 0pt;text-align: left;')
-                | #{screeningLimitaionsText3}
+                | #{screeningLimitationsText3}
               p(style='text-indent: 0pt;text-align: left;')
                 br
               p.s8(style='padding-left: 9pt;padding-right: 28pt;text-indent: 0pt;text-align: left;')
-                | #{screeningLimitaionsText4}
+                | #{screeningLimitationsText4}
               p(style='text-indent: 0pt;text-align: left;')
                 br
               p.s8(style='padding-left: 9pt;padding-right: 7pt;text-indent: 0pt;text-align: left;')
-                | #{screeningLimitaionsText5}
+                | #{screeningLimitationsText5}
       p.s14(style='padding-top: 5pt;padding-left: 16pt;text-indent: 0pt;line-height: 9pt;text-align: left;')
-        | #{REFERENCES}
-      ol#l1
-        li(data-list-text='1.')
-          p(style='padding-left: 25pt;text-indent: -9pt;line-height: 6pt;text-align: left;')
-            | Palomaki GE, Deciu C,
-            | Kloza EM, et al. DNA sequencing of maternal plasma reliably identifies trisomy 18 and trisomy 13 as
+        | #{screeningReferences}
+      ol#l1(style="line-height:50%")
+        li
+          p(style='padding-left: 25pt;text-indent: -9pt;text-align: left;')
+            | Palomaki GE, Deciu C, Kloza EM, et al. DNA sequencing of maternal plasma reliably identifies trisomy 18 and trisomy 13 as
             | well
             | as Down syndrome: an international collaborative study. Genet Med. 2012;14(3):296-305.
             | doi:10.1038/gim.2011.73
-        li(data-list-text='2.')
-          p(style='padding-left: 25pt;text-indent: -9pt;line-height: 6pt;text-align: left;')
+        li
+          p(style='padding-left: 25pt;text-indent: -9pt;text-align: left;')
             | Mazloom AR, Džakula
             | Ž,
             | Oeth P, et al. Noninvasive prenatal detection of sex chromosomal aneuploidies by sequencing
             | circulating
             | cell-free DNA from maternal plasma. Prenat Diagn. 2013;33(6):591-597. doi:10.1002/pd.4127
-        li(data-list-text='3.')
-          p(style='padding-left: 25pt;text-indent: -9pt;line-height: 6pt;text-align: left;')
+        li
+          p(style='padding-left: 25pt;text-indent: -9pt;text-align: left;')
             | Ehrich M, Tynan J,
             | Mazloom A, et al. Genome-wide cfDNA screening: clinical laboratory experience with the first 10,000
             | cases. Genet Med. 2017;19(12):1332-1337. doi:10.1038/gim.2017.56
-        li(data-list-text='4.')
-          p(style='padding-left: 25pt;text-indent: -9pt;line-height: 6pt;text-align: left;')
+        li
+          p(style='padding-left: 25pt;text-indent: -9pt;text-align: left;')
             | American College of
             | Obstetricians and Gynecologists Committee on Genetics. Committee Opinion No. 545: Noninvasive
             | prenatal
             | testing for fetal aneuploidy. Obstet Gynecol. 2012;120(6):1532-1534.
             | doi:10.1097/01.AOG.0000423819.85283.f4
-        li(data-list-text='5.')
-          p(style='padding-left: 25pt;text-indent: -9pt;line-height: 6pt;text-align: left;')
+        li
+          p(style='padding-left: 25pt;text-indent: -9pt;text-align: left;')
             | Gregg AR, Skotko BG,
             | Benkendorf JL, et al. Noninvasive prenatal screening for fetal aneuploidy, 2016 update: a position
             | statement of the American College of Medical Genetics and Genomics. Genet Med.
             | 2016;18(10):1056-1065.
             | doi:10.1038/gim.2016.97
-        li(data-list-text='6.')
+        li
           p(style='padding-left: 25pt;text-indent: -9pt;text-align: left;')
             | American College of Obstetricians and
             | Gynecologists' Committee on Practice Bulletins—Obstetrics; Committee on Genetics; Society for
             | Maternal-Fetal Medicine. Screening for Fetal Chromosomal Abnormalities: ACOG Practice Bulletin,
             | Number
             | 226. Obstet Gynecol. 2020;136(4):e48-e69. doi:10.1097/AOG.0000000000004084
-        li(data-list-text='7.')
-          p(style='padding-left: 25pt;text-indent: -9pt;line-height: 6pt;text-align: left;')
+        li
+          p(style='padding-left: 25pt;text-indent: -9pt;text-align: left;')
             | Kim SK, Hannum G,
             | Geis J,
             | et al. Determination of fetal DNA fraction from the plasma of pregnant women using sequence read
             | counts.
             | Prenat Diagn. 2015;35(8):810-815. doi:10.1002/pd.4615
-        li(data-list-text='8.')
-          p(style='padding-left: 25pt;text-indent: -9pt;line-height: 6pt;text-align: left;')
+        li
+          p(style='padding-left: 25pt;text-indent: -9pt;text-align: left;')
             | Dharajiya NG, Grosu
             | DS,
             | Farkas DH, et al. Incidental Detection of Maternal Neoplasia in Noninvasive Prenatal Testing. Clin
@@ -709,36 +710,6 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
             | 2018;64(2):329-335. doi:10.1373/clinchem.2017.277517
       p(style='text-indent: 0pt;text-align: left;')
         br
-      p(style='padding-left: 7pt;text-indent: 0pt;line-height: 1pt;text-align: left;')
-      p(style='text-indent: 0pt;text-align: left;')
-        br
-      table(border='0' cellspacing='0' cellpadding='0' style='width: 100%; padding-left: 16pt;')
-        tbody
-          tr
-            td
-              p(style='    font-size: 6pt;')
-                strong Juno Diagnostics™:
-                |  11760 Sorrento Valley Rd, Suite J, San Diego, CA
-                |                         92121; 
-                strong CLIA ID#:
-                |                         05D2245052; 
-                strong Lab Director:
-                |  Juan-Sebastian Saldivar, MD.
-              p
-                | This document contains private and confidential health information protected by state
-                | and federal law. If you have received this document in error, please call 858-201-7154.
-            td
-              img(width='86' height='30' src='data:image/png;base64,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')
-          tr
-            td
-              div(style='display: flex; justify-content: space-between;')
-                p(style='    font-size: 6pt;color: #8A727D;') JANE DOE, DOB 6/24/1991
-                p(style='    font-size: 6pt;color: #8A727D;')
-                  | JUNO: HAZEL™ NON-INVASIVE PRENATAL SCREEN
-                  | BASIC
-                p(style='    font-size: 6pt;')  
-            td
-              p Page 1 of 2
       h2(style='padding-left: 16pt;text-indent: 0pt;text-align: left;')
         | Disclaimer: 
         span.p
@@ -753,3 +724,38 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
       p(style='text-indent: 0pt;text-align: left;')
         br
       p(style='padding-left: 7pt;text-indent: 0pt;line-height: 1pt;text-align: left;')
+      p(style='padding-left: 7pt;text-indent: 0pt;line-height: 1pt;text-align: left;')
+      p(style='text-indent: 0pt;text-align: left;')
+        br
+      div(style='page-break-inside:avoid;page-break-after:always')
+        table(border='0' cellspacing='0' cellpadding='0' style='width: 100%; padding-top: 16pt; ')
+          tbody
+            tr
+              td
+                p(style='    font-size: 7pt;')
+                  strong Juno Diagnostics™:
+                  |  11760 Sorrento Valley Rd, Suite J, San Diego, CA
+                  |                             92121; 
+                  strong CLIA ID#:
+                  |                             05D2245052; 
+                  strong Lab Director:
+                  |  Juan-Sebastian Saldivar, MD.
+                p
+                  | This document contains private and confidential health information protected by state
+                  | and federal law. If you have received this document in error, please call 858-201-7154.
+              td
+                p
+              td
+                img(width='86' height='30' src='data:image/png;base64,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')
+        table(style='padding-bottom: 16pt; width: 100%;')
+          tbody
+            tr
+              td(style='width: 200pt')
+                p(style='    font-size: 7pt;color: #8A727D;') #{patientName}, DOB #{patientDob}
+              td
+                p(style='    font-size: 7pt;color: #8A727D;')  #{testName}
+              td
+                p(style='    font-size: 7pt;')  
+              td
+                p Page 1 of 2
+
