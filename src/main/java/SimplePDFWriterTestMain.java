@@ -113,7 +113,7 @@ public class SimplePDFWriterTestMain {
 
             PugConfiguration config = new PugConfiguration();
             config.setMode(Pug4J.Mode.HTML);
-            PugTemplate template = Pug4J.getTemplate("./index.pug");
+            PugTemplate template = Pug4J.getTemplate("./templates/report.pug");
 
             String html = Pug4J.render(template, obj);
 
