@@ -422,21 +422,21 @@
                     <p class="s9" style="padding-top: 7pt;text-indent: 0pt; text-align: center;">
                         #{overallResultText}
                     </p>
-                    <img width="50px" src="./templates/assets/square-check.svg" />
+                    <img width="50px" src="./assets/square-check.svg" />
                 </td>
                 <td
                     style="width:185pt;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#8A727D; text-align: center;">
                     <p class="s9" style="padding-top: 7pt;text-indent: 0pt; text-align: center;">
                         #{fetalSexText}
                     </p>
-                    <img width="50px" src="./templates/assets/venus-light.svg" />
+                    <img width="50px" src="./assets/venus-light.svg" />
                 </td>
                 <td
                     style="width:254pt;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#8A727D;border-right-style:solid;border-right-width:1pt;border-right-color:#8A727D; text-align: center;">
                     <p class="s9" style="padding-top: 7pt;text-indent: 0pt; text-align: center;">
                         #{fetalFractionText}
                     </p>
-                    <img width="50px" src="./templates/assets/dna-light.svg" />
+                    <img width="50px" src="./assets/dna-light.svg" />
                 </td>
             </tr>
         </table>
@@ -453,18 +453,18 @@
                     style="width:109pt;border-left-style:solid;border-left-width:1pt;border-left-color:#8D737D;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#8D737D">
                     <p class="s21"
                         style="padding-top: 1pt;padding-left: 9pt;text-indent: 0pt;line-height: 41pt;text-align: left;">
-                        #{predictivePositiveValue}
+                        #{ppvPercentage}
                     </p>
                     <p class="s8" style="padding-left: 9pt;text-indent: 0pt;line-height: 10pt;text-align: left;">Age:
-                        #{patientAge}</p>
+                        #{ppvPatientAge}</p>
                     <p class="s8" style="padding-top: 1pt;padding-left: 9pt;text-indent: 0pt;text-align: left;">GA:
-                        #{gaValue}</p>
+                        #{ppvPatientGA}</p>
                 </td>
                 <td
                     style="width:457pt;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#8D737D;border-right-style:solid;border-right-width:1pt;border-right-color:#8D737D">
                     <p class="s8"
                         style="padding-top: 7pt;padding-left: 16pt;padding-right: 19pt;text-indent: 0pt;text-align: left;">
-                        #{predictivePositveText}</p>
+                        #{ppvExplanation}</p>
                 </td>
             </tr>
         </table>
@@ -603,21 +603,21 @@
         </table>
         <p style="text-indent: 0pt;text-align: left;"><br /></p>
         <p class="s13" style="padding-left: 7pt;text-indent: 0pt;line-height: 1pt;text-align: left;"> </p>
-        <div style="display: flex; justify-content: space-around;">
+        <div style="">
             <p class="s14"
-                style="padding-top: 1pt;padding-left: 7pt;text-indent: 0pt;text-align: left; width: 48%; margin-top: 10px; border-top: black; border-top-width: 1px; border-top-style: solid; padding-right: 2px;">
+                style="padding-top: 1pt;padding-left: 7pt;text-indent: 0pt;text-align: left; width: 48%; margin-top: 10px; border-top: black; border-top-width: 1px; border-top-style: solid; padding-right: 2px; float: left; margin: 2pt;">
                 Lab
                 Director
                 Signature
             </p>
             <p class="s14"
-                style="padding-top: 1pt;padding-left: 7pt;text-indent: 0pt;text-align: left; width: 48%; margin-top: 10px; border-top: black; border-top-width: 1px; border-top-style: solid; padding-left: 2px;">
+                style="padding-top: 1pt;padding-left: 7pt;text-indent: 0pt;text-align: left; width: 48%; margin-top: 10px; border-top: black; border-top-width: 1px; border-top-style: solid; padding-left: 2px; float: left; margin: 2pt;">
                 Signature
                 Date
             </p>
         </div>
         <div style="page-break-inside:avoid;page-break-after:always">
-            <table border="0" cellspacing="0" cellpadding="0" style="width: 100%; padding: 16pt 0pt; ">
+            <table border="0" cellspacing="0" cellpadding="0" style="width: 100%; padding-top: 16pt; ">
                 <tr>
                     <td>
                         <p style="    font-size: 7pt;">
@@ -631,18 +631,24 @@
                             and federal law. If you have received this document in error, please call 858-201-7154.
                         </p>
                     </td>
+                    <td>
+                        <p></p>
+                    </td>
                     <td><img width="86" height="30"
                             src="data:image/png;base64,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" />
                     </td>
                 </tr>
+            </table>
+            <table style="padding-bottom: 16pt; width: 100%;">
                 <tr>
+                    <td style="width: 200pt">
+                        <p style="    font-size: 7pt;color: #8A727D;">#{patientName}, DOB #{patientDob}</p>
+                    </td>
                     <td>
-                        <div style="display: flex; justify-content: space-between;">
-                            <p style="    font-size: 7pt;color: #8A727D;">JANE DOE, DOB 6/24/1991</p>
-                            <p style="    font-size: 7pt;color: #8A727D;"> JUNO: HAZEL™ NON-INVASIVE PRENATAL SCREEN
-                                BASIC</p>
-                            <p style="    font-size: 7pt;"> </p>
-                        </div>
+                        <p style="    font-size: 7pt;color: #8A727D;"> #{testName}</p>
+                    </td>
+                    <td>
+                        <p style="    font-size: 7pt;"> </p>
                     </td>
                     <td>
                         <p>Page 1 of 2</p>
@@ -816,19 +822,19 @@
                     style="width:572pt;border-top-style:solid;border-top-width:1pt;border-top-color:#BCBEC0;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#BCBEC0">
                     <p class="s8"
                         style="padding-top: 7pt;padding-left: 9pt;padding-right: 7pt;text-indent: 0pt;text-align: left;">
-                        #{screeningLimitaionsText1}</p>
+                        #{screeningLimitationsText1}</p>
                     <p style="text-indent: 0pt;text-align: left;"><br /></p>
                     <p class="s8" style="padding-left: 9pt;text-indent: 0pt;text-align: left;">
-                        #{screeningLimitaionsText2}</p>
+                        #{screeningLimitationsText2}</p>
                     <p style="text-indent: 0pt;text-align: left;"><br /></p>
                     <p class="s8" style="padding-left: 9pt;padding-right: 28pt;text-indent: 0pt;text-align: left;">
-                        #{screeningLimitaionsText3}</p>
+                        #{screeningLimitationsText3}</p>
                     <p style="text-indent: 0pt;text-align: left;"><br /></p>
                     <p class="s8" style="padding-left: 9pt;padding-right: 28pt;text-indent: 0pt;text-align: left;">
-                        #{screeningLimitaionsText4}</p>
+                        #{screeningLimitationsText4}</p>
                     <p style="text-indent: 0pt;text-align: left;"><br /></p>
                     <p class="s8" style="padding-left: 9pt;padding-right: 7pt;text-indent: 0pt;text-align: left;">
-                        #{screeningLimitaionsText5}</p>
+                        #{screeningLimitationsText5}</p>
                 </td>
             </tr>
         </table>
@@ -893,38 +899,46 @@
         <p style="text-indent: 0pt;text-align: left;"><br /></p>
         <p style="padding-left: 7pt;text-indent: 0pt;line-height: 1pt;text-align: left;" />
         <p style="text-indent: 0pt;text-align: left;"><br /></p>
-        <table border="0" cellspacing="0" cellpadding="0" style="width: 100%; padding-left: 16pt;">
-            <tr>
-                <td>
-                    <p style="    font-size: 6pt;">
+        <div style="page-break-inside:avoid;page-break-after:always">
+            <table border="0" cellspacing="0" cellpadding="0" style="width: 100%; padding-top: 16pt; ">
+                <tr>
+                    <td>
+                        <p style="    font-size: 7pt;">
 
-                        <strong>Juno Diagnostics™:</strong> 11760 Sorrento Valley Rd, Suite J, San Diego, CA
-                        92121; <strong>CLIA ID#:</strong>
-                        05D2245052; <strong>Lab Director:</strong> Juan-Sebastian Saldivar, MD.
-                    </p>
-                    <p>
-                        This document contains private and confidential health information protected by state
-                        and federal law. If you have received this document in error, please call 858-201-7154.
-                    </p>
-                </td>
-                <td><img width="86" height="30"
-                        src="data:image/png;base64,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" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div style="display: flex; justify-content: space-between;">
-                        <p style="    font-size: 6pt;color: #8A727D;">JANE DOE, DOB 6/24/1991</p>
-                        <p style="    font-size: 6pt;color: #8A727D;"> JUNO: HAZEL™ NON-INVASIVE PRENATAL SCREEN
-                            BASIC</p>
-                        <p style="    font-size: 6pt;"> </p>
-                    </div>
-                </td>
-                <td>
-                    <p>Page 1 of 2</p>
-                </td>
-            </tr>
-        </table>
+                            <strong>Juno Diagnostics™:</strong> 11760 Sorrento Valley Rd, Suite J, San Diego, CA
+                            92121; <strong>CLIA ID#:</strong>
+                            05D2245052; <strong>Lab Director:</strong> Juan-Sebastian Saldivar, MD.
+                        </p>
+                        <p>
+                            This document contains private and confidential health information protected by state
+                            and federal law. If you have received this document in error, please call 858-201-7154.
+                        </p>
+                    </td>
+                    <td>
+                        <p></p>
+                    </td>
+                    <td><img width="86" height="30"
+                            src="data:image/png;base64,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" />
+                    </td>
+                </tr>
+            </table>
+            <table style="padding-bottom: 16pt; width: 100%;">
+                <tr>
+                    <td style="width: 200pt">
+                        <p style="    font-size: 7pt;color: #8A727D;">#{patientName}, DOB #{patientDob}</p>
+                    </td>
+                    <td>
+                        <p style="    font-size: 7pt;color: #8A727D;"> #{testName}</p>
+                    </td>
+                    <td>
+                        <p style="    font-size: 7pt;"> </p>
+                    </td>
+                    <td>
+                        <p>Page 1 of 2</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
         <h2 style="padding-left: 16pt;text-indent: 0pt;text-align: left;">Disclaimer: <span class="p">This laboratory
                 study
                 was developed and its performance characteristics determined by Juno Diagnostics. Juno's laboratory is
