@@ -6,9 +6,6 @@ import com.lowagie.text.DocumentException;
 import de.neuland.pug4j.Pug4J;
 import de.neuland.pug4j.PugConfiguration;
 import de.neuland.pug4j.template.PugTemplate;
-import org.apache.commons.io.IOUtils;
-import org.json.JSONObject;
-import org.xhtmlrenderer.pdf.ITextRenderer;
 
 import java.io.*;
 import java.net.URISyntaxException;
@@ -42,12 +39,13 @@ public class SimplePDFWriterTestMain {
 
       System.out.println("Report: " + mapper.writeValueAsString(report));
             NIPSReportStrings strings = (NIPSReportStrings) report.getResultData().getStrings();
+
             User patient = report.getPatient();
             if(patient == null) {
                 System.err.println("Cannot find patient details in test report");
                 return;
             }
-
+            
             Date signedOutAt = report.getSignoutDetails().getSignedOutAt().getTime();
             Date lmp = patient.getPatientDetails().getMedicalDetails().getLmpDate().getTime();
             Date collection = null;
@@ -68,11 +66,12 @@ public class SimplePDFWriterTestMain {
             obj.put("testNameExtended", strings.getTestDetails().getTestName());
             obj.put("testDescription", strings.getTestDetails().getTestDescription());
             obj.put("overallResultText", strings.getOverallResults().getOverallResultText());
-            obj.put("overallResultGraphic", strings.getOverallResults().getOverallResultSVGPdf());
+            obj.put("overallResultSVGPdf", strings.getOverallResults().getOverallResultSVGPdf());
             obj.put("fetalSexText", strings.getOverallResults().getOverallResultFetalSexText());
-            obj.put("overallSexGraphic", strings.getOverallResults().getOverallFetalSexSVGPdf());
+            obj.put("overallFetalSexSVGPdf", strings.getOverallResults().getOverallFetalSexSVGPdf());
             obj.put("fetalFractionText", strings.getOverallResults().getOverallResultFetalFractionText());
-            obj.put("fetalFractionGraphic", strings.getOverallResults().getOverallFetalFractionSVGPdf());
+            obj.put("overallFetalFractionSVGPdf", strings.getOverallResults().getOverallFetalFractionSVGPdf());
+            obj.put("overallResultsSummary", strings.getOverallResults().getOverallResultsSummary());
             
             obj.put("patientDemographics", "PATIENT DEMOGRAPHICS");
             obj.put("testNameExtended", "ABOUT JUNO'S HAZEL™ NON - INVASIVE PRENATAL SCREEN:");
@@ -92,7 +91,7 @@ public class SimplePDFWriterTestMain {
             obj.put("ppvPatientAge", strings.getPpvDetails().getPpvPatientAge());
             obj.put("ppvPatientGA", strings.getPpvDetails().getPpvPatientGA());
             obj.put("ppvExplanation", strings.getPpvDetails().getPpvExplanation());
-            
+
 
             
             obj.put("POST_TEST_RISK", "Post-test risk");
@@ -100,7 +99,6 @@ public class SimplePDFWriterTestMain {
 
 
             obj.put("WHAT_DOES_THIS_RESULT_MEAN_HEADER", "WHAT DOES THIS RESULT MEAN?");
-            obj.put("resultMeaningText", "Results are consistent with a female fetus at increased risk for trisomy 21 (Down syndrome). Approximately 9 out of every 10 people with this result will have a baby with Down syndrome. Genetic counseling and prenatal diagnostic testing is recommended.");
             
             obj.put("SCREENING_METHODS_HEADER", "SCREENING METHODS");
             obj.put("screeningMethodTest", "Circulating cell-free DNA (ccfDNA) is purified from the plasma component of maternal blood. The extracted DNA is then converted into a whole genome DNA library for sequencing-based analysis of chromosomes 21, 18, and 13.");
@@ -109,13 +107,8 @@ public class SimplePDFWriterTestMain {
 
 
             obj.put("SCREENING_LIMITATIONS_HEADER", "SCREENING LIMITATIONS");
-            obj.put("screeningLimitationsText1", "This screen is for screening purposes only, and is not diagnostic. While the results of these screens are highly accurate, discordant results, including inaccurate fetal sex prediction, may occur due to placental, maternal, or fetal mosaicism or neoplasm; vanishing twin; prior maternal organ transplant; or other causes. Sex chromosomal aneuploidies are not reportable for known multiple gestations. ");
-            obj.put("screeningLimitationsText2", "The screen does not replace the accuracy and precision of prenatal diagnosis with CVS or amniocentesis. A patient with a positive screening result should receive genetic counseling and be offered invasive prenatal diagnosis for confirmation of test results. A negative result does not ensure an unaffected pregnancy nor does it exclude the possibility of other chromosomal abnormalities or birth defects which are not a part of this screening evaluation. An uninformative result may be reported, the causes of which may include but are not limited to insufficient sequencing coverage, noise or artifacts in the region, amplification or sequencing bias, or insufficient fetal representation. The ability to report results may be impacted by maternal BMI, maternal weight and maternal autoimmune disorders. ");
-            obj.put("screeningLimitationsText3", "Screening for whole chromosome abnormalities (including sex chromosomes) and for sub-chromosomal abnormalities could lead to the potential discovery of both fetal and maternal genomic abnormalities that could have major, minor, or no, clinical significance. Evaluating the significance of a positive or a non-reportable result may involve both diagnostic testing and additional studies on the pregnant person. Such investigations may lead to a diagnosis of maternal chromosomal or sub-chromosomal abnormalities, which on occasion may be associated with benign or malignant maternal neoplasms. ");
-            obj.put("screeningLimitationsText4", "This screen may not accurately identify fetal triploidy, balanced rearrangements, or the precise location of sub-chromosomal duplications or deletions; these may be detected by prenatal diagnosis with karyotype and SNP-microarray. Cell-free DNA screening is not intended to identify pregnancies at risk for neural tube defects or ventral wall defects; these may be detected by prenatal ultrasound evaluation.");
-            obj.put("screeningLimitationsText5", "The results of this screening, including the benefits and limitations, should be discussed with a qualified healthcare provider. Pregnancy management decisions, including termination of the pregnancy, should not be based on the results of these screens alone. The healthcare provider is responsible for the use of this information in the management of their patient.");
-            // Conditions section
 
+            // Conditions section
             int count = 1;
             for(Condition condition : strings.getConditions()) {
                 obj.put("condition" + count + "Title", condition.getLabel());
@@ -130,19 +123,16 @@ public class SimplePDFWriterTestMain {
             /*
              * Results meaning section
              * obj.put("resultsMeaning", strings.getOverallResults().getOverallResultsSummary());
-               /*
+               */
 
-            /*
-             * Static text section
-             */
+            // Static text section
             obj.put("screeningPerformance", strings.getStaticText().getScreeningPerformance());
             obj.put("screeningLimitations", strings.getStaticText().getScreeningLimitations());
             obj.put("screeningReferences", "REFERENCES" );
-            obj.put("disclaimer", strings.getStaticText().getDisclaimer());
+            obj.put("disclaimer", strings.getStaticText().getDisclaimer().replaceAll("’", "'"));
             obj.put("hipaaDisclaimer", strings.getStaticText().getHipaaDisclaimer());
             obj.put("junoFooter", strings.getStaticText().getJunoFooter());
             obj.put("testName", "JUNO: HAZEL™ NON-INVASIVE PRENATAL SCREEN BASIC");
-
 
             PugConfiguration config = new PugConfiguration();
             config.setMode(Pug4J.Mode.HTML);
@@ -150,22 +140,13 @@ public class SimplePDFWriterTestMain {
 
             String html = Pug4J.render(template, obj);
 
+            String screeningLimitations = strings.getStaticText().getScreeningLimitations().replaceAll("<br>\\\n", "");
+            html = html.replace("[screeningLimitations]", screeningLimitations);
+
             System.out.println("HTML: " + mapper.writeValueAsString(html));
-
-            // alternate pdf converter, for checking which PDF converter is suitable for our reports
+            System.out.println("strings: " + mapper.writeValueAsString(strings.getStaticText().getDisclaimer()));
+            
             HtmlConverter.convertToPdf(html, new FileOutputStream(obj.get("patientName") + ".pdf"));
-
-            // ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-
-            // ITextRenderer renderer = new ITextRenderer();
-            // renderer.setDocumentFromString(html);
-            // renderer.layout();
-            // renderer.createPDF(outputStream, false);
-            // renderer.finishPDF();
-
-            // ByteArrayInputStream inputStream = new ByteArrayInputStream(outputStream.toByteArray());
-            // IOUtils.copy(inputStream, new FileOutputStream(obj.get("patientName") + ".pdf"));
-
         } catch (URISyntaxException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
