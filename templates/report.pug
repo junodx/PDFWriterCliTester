@@ -1,3 +1,5 @@
+- var overallStatus = overallCondition == "POSITIVE"
+
 doctype transitional
 html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
   head
@@ -87,21 +89,21 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
       font-style: normal;
       font-weight: normal;
       text-decoration: none;
-      font-size: 12pt;
+      font-size: 10pt;
       }
       .s11 {
       color: #8A727D;
       font-family: "Times New Roman", serif;
       font-style: normal;
       font-weight: normal;
-      font-size: 14pt;
+      font-size: 12pt;
       }
       .s12 {
       color: #8A727D;
       font-family: Calibri, sans-serif;
       font-style: normal;
       font-weight: bold;
-      font-size: 14pt;
+      font-size: 12pt;
       }
       .s13 {
       color: black;
@@ -132,7 +134,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
       font-family: "Times New Roman", serif;
       font-style: normal;
       font-weight: normal;
-      font-size: 14pt;
+      font-size: 12pt;
       border-bottom-style: solid;
       }
       .h1 {
@@ -140,7 +142,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
       font-family: Calibri, sans-serif;
       font-style: normal;
       font-weight: bold;
-      font-size: 14pt;
+      font-size: 12pt;
       }
       .s17 {
       color: #231F20;
@@ -148,7 +150,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
       font-style: normal;
       font-weight: normal;
       text-decoration: none;
-      font-size: 12pt;
+      font-size: 10pt;
       }
       .s18 {
       color: #FFF;
@@ -172,7 +174,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
       font-style: normal;
       font-weight: bold;
       text-decoration: none;
-      font-size: 14pt;
+      font-size: 12pt;
       }
       .p,
       p {
@@ -325,7 +327,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
             tr(style='height:15pt')
               td(style='width:307pt')
                 p.s2(style='padding-left: 1pt;text-indent: 0pt;text-align: left;')
-                  | #{testNameExtended}
+                  | About #{testNameExtended}:
             tr(style='height:61pt')
               td(style='width:307pt')
                 p.s6(style='padding-top: 1pt;padding-left: 1pt;padding-right: 1pt;text-indent: 0pt;line-height: 8pt;text-align: justify;')
@@ -365,27 +367,30 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
               img(width='50px' src=overallFetalFractionSVGPdf)
       p(style='text-indent: 0pt;text-align: left;')
         br
-      table(style='border-collapse:collapse;margin-left:7.7492pt' cellspacing='0')
-        tbody
-          tr(style='height:19pt')
-            td(style='width:566pt' colspan='2' bgcolor='#8A727D')
-              p.s7(style='padding-top: 2pt;padding-left: 5pt;text-indent: 0pt;text-align: left;')
-                | #{POSITIVE_PREDICTIVE_VALUE_HEADER}
-          tr(style='height:73pt')
-            td(style='width:109pt;border-left-style:solid;border-left-width:1pt;border-left-color:#8D737D;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#8D737D')
-              p.s21(style='padding-top: 1pt;padding-left: 9pt;text-indent: 0pt;line-height: 41pt;text-align: left;')
-                | #{ppvPercentage}
-              p.s8(style='padding-left: 9pt;text-indent: 0pt;line-height: 10pt;text-align: left;')
-                | Age:
-                | #{ppvPatientAge}
-              p.s8(style='padding-top: 1pt;padding-left: 9pt;text-indent: 0pt;text-align: left;')
-                | GA:
-                | #{ppvPatientGA}
-            td(style='width:457pt;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#8D737D;border-right-style:solid;border-right-width:1pt;border-right-color:#8D737D')
-              p.s8(style='padding-top: 7pt;padding-left: 16pt;padding-right: 19pt;text-indent: 0pt;text-align: left;')
-                | #{ppvExplanation}
+      if overallStatus
+        br
+        table(style='border-collapse:collapse;margin-left:7.7492pt' cellspacing='0')
+          tbody
+            tr(style='height:19pt')
+              td(style='width:566pt' colspan='2' bgcolor='#8A727D')
+                p.s7(style='padding-top: 2pt;padding-left: 5pt;text-indent: 0pt;text-align: left;')
+                  | #{POSITIVE_PREDICTIVE_VALUE_HEADER}
+            tr(style='height:73pt')
+              td(style='width:109pt;border-left-style:solid;border-left-width:1pt;border-left-color:#8D737D;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#8D737D')
+                p.s21(style='padding-top: 1pt;padding-left: 9pt;text-indent: 0pt;line-height: 41pt;text-align: left;')
+                  | #{ppvPercentage}
+                p.s8(style='padding-left: 9pt;text-indent: 0pt;line-height: 10pt;text-align: left;')
+                  | Age:
+                  | #{ppvPatientAge}
+                p.s8(style='padding-top: 1pt;padding-left: 9pt;text-indent: 0pt;text-align: left;')
+                  | GA:
+                  | #{ppvPatientGA}
+              td(style='width:457pt;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#8D737D;border-right-style:solid;border-right-width:1pt;border-right-color:#8D737D')
+                p.s8(style='padding-top: 7pt;padding-left: 16pt;padding-right: 19pt;text-indent: 0pt;text-align: left;')
+                  | #{ppvExplanation}
       p(style='text-indent: 0pt;text-align: left;')
         br
+      br
       table(style='border-collapse:collapse;margin-left:7.375pt; border-style:solid;border-width:1pt;border-color:#8D737D; width: 100%;' cellspacing='0')
         tbody
           tr(style='height:19pt')
@@ -416,7 +421,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
               p.s10(style='padding-top: 12pt;padding-left: 49pt;text-indent: 0pt;text-align: left;font-size: 10pt;')
                 | #{condition1InterpretationText}
             td(style='width:15%;text-align:center;border-right-style:solid;border-right-width:1pt;border-right-color:#8D737D')
-              img(width='20px' heigth='17px' src='./templates/assets/trisomy-21-shape-aneuploidydetected.svg')
+              img(width='20px' heigth='17px' src=condition1Icon)
                 br
               p(style='padding-left: 54pt;text-indent: 0pt;text-align: left;')
               p.s8 21
@@ -437,7 +442,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
               p.s10(style='padding-left: 49pt;text-indent: 0pt;text-align: left;font-size: 10pt;')
                 | #{condition2InterpretationText}
             td(style='width:15%;text-align: center;')
-              img(width='20px' heigth='30px' src='./templates/assets/trisomy-18-shape-aneuploidynotdetected.svg')
+              img(width='20px' heigth='20pt' src=condition2Icon)
                 br
               p(style='padding-left: 54pt;text-indent: 0pt;text-align: left;')
               p.s8 18
@@ -458,12 +463,13 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
               p.s10(style='padding-left: 49pt;text-indent: 0pt;text-align: left;font-size: 10pt;')
                 | #{condition3InterpretationText}
             td(style='width:15%;text-align: center;')
-              img(width='20px' heigth='45px' src='./templates/assets/trisomy-13-shape-aneuploidynotdetected.svg')
+              img(width='20px' heigth='10pt' src=condition3Icon)
                 br
               p(style='padding-left: 54pt;text-indent: 0pt;text-align: left;')
               p.s8 13
       p(style='text-indent: 0pt;text-align: left;')
         br
+      br
       table(style='border-collapse:collapse;margin-left:7.7504pt' cellspacing='0')
         tbody
           tr(style='height:19pt')
@@ -476,6 +482,8 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
                 | #{overallResultsSummary}
       p(style='text-indent: 0pt;text-align: left;')
         br
+      if !overallStatus
+        br
       table(style='border-collapse:collapse;margin-left:7.5pt' cellspacing='0')
         tbody
           tr(style='height:20pt')
@@ -486,9 +494,14 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
           tr(style='height:33pt')
             td(style='width:567pt')
               p.s10(style='padding-top: 3pt;padding-left: 9pt;text-indent: 0pt;line-height: 14pt;text-align: left;')
-                | #{screeningMethodTest}
+                | #{screeningMethodText}
       p(style='text-indent: 0pt;text-align: left;')
         br
+      if !overallStatus
+        br
+        br
+        br
+      br
       p.s13(style='padding-left: 7pt;text-indent: 0pt;line-height: 1pt;text-align: left;')  
       div(style='margin-top: 10pt; margin-bottom: 35pt;')
         p.s14(style='padding-top: 1pt;padding-left: 7pt;text-indent: 0pt;text-align: left; width: 48%; margin-top: 10px; border-top: black; border-top-width: 1px; border-top-style: solid; padding-right: 2px; float: left; margin: 2pt;')
@@ -498,12 +511,17 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
         p.s14(style='padding-top: 1pt;padding-left: 7pt;text-indent: 0pt;text-align: left; width: 48%; margin-top: 10px; border-top: black; border-top-width: 1px; border-top-style: solid; padding-left: 2px; float: left; margin: 2pt;')
           | Signature
           | Date
+      if !overallStatus
+        br
+        br
+        br
+      
       div(style='page-break-inside:avoid;page-break-after:always; border-top: gray; border-top-width: 1px; border-top-style: solid;')
         table(border='0' cellspacing='0' cellpadding='0' style='width: 100%; padding-top: 16pt;')
           tbody
             tr
               td
-                p(style='    font-size: 7pt;')
+                p(style='font-size: 7pt;')
                   strong Juno Diagnostics™:
                   |  11760 Sorrento Valley Rd, Suite J, San Diego, CA
                   |                             92121; 
@@ -511,9 +529,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
                   |                             05D2245052; 
                   strong Lab Director:
                   |  Juan-Sebastian Saldivar, MD.
-                p
-                  | This document contains private and confidential health information protected by state
-                  | and federal law. If you have received this document in error, please call 858-201-7154.
+                p #{hipaaDisclaimer}
               td
                 p
               td
@@ -522,11 +538,11 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
           tbody
             tr
               td(style='width: 200pt')
-                p(style='    font-size: 7pt;color: #8A727D;') #{patientName}, DOB #{patientDob}
+                p(style='font-size: 7pt;color: #8A727D;') #{patientName}, DOB #{patientDob}
               td
-                p(style='    font-size: 7pt;color: #8A727D;')  #{testName}
+                p(style='font-size: 7pt;color: #8A727D;')  #{testName}
               td
-                p(style='    font-size: 7pt;')  
+                p(style='font-size: 7pt;')  
               td
                 p Page 1 of 2
       p(style='text-indent: 0pt;text-align: left;')
@@ -556,6 +572,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
                 p.s3(style='padding-left: 5pt;text-indent: 0pt;line-height: 11pt;text-align: right;')
                   span.s15 #{productName}
       p(style="height: 5pt;")
+      br
       p.s16(style='width:567pt;border-top-style:solid;border-top-width:1pt; border-top-color:#BCBEC0; border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#BCBEC0;padding-top: 2pt;padding-left: 9pt;text-indent: 0pt;text-align: left;')
         span.h1
           | #{SCREENING_PERFORMANCE_HEADER}
@@ -618,6 +635,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
                 | (99%-100%)
       p(style='text-indent: 0pt;text-align: left;')
         br
+      br
       table(style='border-collapse:collapse;margin-left:7.375pt' cellspacing='0')
         tbody
           tr(style='height:20pt')
@@ -628,7 +646,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
             td(style='width:572pt;border-top-style:solid;border-top-width:1pt;border-top-color:#BCBEC0;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#BCBEC0')
               div#screenL.s8(style='padding-top: 7pt;padding-left: 9pt;padding-right: 7pt;text-indent: 0pt;text-align: left;') [screeningLimitations]
       p.s14(style='padding-top: 5pt;padding-left: 16pt;text-indent: 0pt;line-height: 9pt;text-align: left;')
-        | #{screeningReferences}
+        | #{SCREENING_REFERENCES_HEADER}
       ol#l1(style="line-height:50%; border-bottom: gray; border-bottom-width: 1px; border-bottom-style: solid;")
         li
           p(style='padding-left: 25pt;text-indent: -9pt;text-align: left;')
@@ -699,7 +717,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
           tbody
             tr
               td
-                p(style='    font-size: 7pt;')
+                p(style='font-size: 7pt;')
                   strong Juno Diagnostics™:
                   |  11760 Sorrento Valley Rd, Suite J, San Diego, CA
                   |                             92121; 
@@ -707,9 +725,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
                   |                             05D2245052; 
                   strong Lab Director:
                   |  Juan-Sebastian Saldivar, MD.
-                p
-                  | This document contains private and confidential health information protected by state
-                  | and federal law. If you have received this document in error, please call 858-201-7154.
+                p #{hipaaDisclaimer}
               td
                 p
               td
@@ -718,11 +734,11 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
           tbody
             tr
               td(style='width: 200pt')
-                p(style='    font-size: 7pt;color: #8A727D;') #{patientName}, DOB #{patientDob}
+                p(style='font-size: 7pt;color: #8A727D;') #{patientName}, DOB #{patientDob}
               td
-                p(style='    font-size: 7pt;color: #8A727D;')  #{testName}
+                p(style='font-size: 7pt;color: #8A727D;')  #{testName}
               td
-                p(style='    font-size: 7pt;')  
+                p(style='font-size: 7pt;')  
               td
                 p Page 1 of 2
 
