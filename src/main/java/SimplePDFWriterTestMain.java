@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONObject;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -57,7 +58,14 @@ public class SimplePDFWriterTestMain {
             if(report.getSampleCollectionTimestamp() != null)
                 collection = report.getSampleCollectionTimestamp().getTime();
 
+            SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = new Date();
+            String signDate = sdf2.format(date);
+            String resultsForText = StringUtils.capitalize(statusJson.get("overallCondition").toString().toLowerCase()) + " Result for " + strings.getTestDetails().getTestShortName();
+
             Map<String, Object> obj = new HashMap<>();
+            obj.put("signDate", signDate);
+
             obj.put("overallCondition", statusJson.get("overallCondition").toString());
             obj.put("patientName", patient.getFirstName() + " " + patient.getLastName());
             obj.put("patientDob", patient.getDateOfBirth());
@@ -68,7 +76,7 @@ public class SimplePDFWriterTestMain {
             obj.put("patientGestationType", "Singleton");
             obj.put("reportDate", sdf.format(signedOutAt));
 
-            obj.put("productName", "Positive Result for Hazel NIPS Basic");
+            obj.put("resultsForText", resultsForText);
             obj.put("testNameShort", strings.getTestDetails().getTestShortName());
             obj.put("testNameExtended", strings.getTestDetails().getTestName());
             obj.put("testName", strings.getTestDetails().getTestName());
