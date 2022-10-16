@@ -4,7 +4,7 @@ doctype transitional
 html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
   head
     meta(http-equiv='Content-Type' content='text/html; charset=utf-8')
-    title #{productName}
+    title #{resultsForText}
     style(type='text/css').
       * {
       margin: 0px;
@@ -267,7 +267,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
               img(width='101' height='35' src='./templates/assets/juno-logo-purple.svg')
             td(style='width:423pt;border-left-style:solid;border-left-width:1pt;border-left-color:#FFFFFF')
                 p.s3(style='padding-left: 5pt;text-indent: 0pt;line-height: 11pt;text-align: right;')
-                  span.s15 #{productName}
+                  span.s15 #{resultsForText}
       p(style='text-indent: 0pt;text-align: left;')
         br
       div
@@ -410,60 +410,61 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
             td(style='width:15%;text-align: center;')
               p(style='text-indent: 0pt;text-align: left;')
                 br
-          tr(style='height:52pt;  border-left-color:#8D737D;')
-            td(style='width:25%; ')
+          tr(style='height:60px;  border-left-color:#8D737D;')
+            td(style='width:25%;height:60px;vertical-align: middle;')
               p.s10(style='padding-top: 12pt;padding-left: 9pt;text-indent: 0pt;text-align: left;font-size: 10pt;')
                 | #{condition1Title}
-            td(style='width:30%')
+            td(style='width:30%;height:60px;vertical-align: middle;')
               p.s10(style='padding-top: 12pt;padding-left: 33pt;text-indent: 0pt;text-align: left;font-size: 10pt;')
                 | #{condition1Risk}
-            td(style='width:30%')
+            td(style='width:30%;height:60px;vertical-align: middle;height:60px;')
               p.s10(style='padding-top: 12pt;padding-left: 49pt;text-indent: 0pt;text-align: left;font-size: 10pt;')
                 | #{condition1InterpretationText}
-            td(style='width:15%;text-align:center;border-right-style:solid;border-right-width:1pt;border-right-color:#8D737D')
-              img(width='20px' heigth='17px' src=condition1Icon)
+            td(style='width:15%;height:60px;vertical-align: middle;text-align:center;border-right-style:solid;border-right-width:1pt;border-right-color:#8D737D')
+              img(width='25px' heigth='20px' src=condition1Icon)
                 br
               p(style='padding-left: 54pt;text-indent: 0pt;text-align: left;')
               p.s8 21
-          tr(style='height:52pt')
-            td(style='width:25%;')
+          tr(style='height:100px')
+            td(style='width:25%;height:60px;vertical-align: middle;')
               p(style='text-indent: 0pt;text-align: left;')
                 br
               p.s10(style='padding-left: 9pt;text-indent: 0pt;text-align: left; font-size: 10pt;')
                 | #{condition2Title}
-            td(style='width:30%')
+            td(style='width:30%;height:60px;vertical-align: middle;')
               p(style='text-indent: 0pt;text-align: left;')
                 br
               p.s10(style='padding-left: 33pt;text-indent: 0pt;text-align: left;font-size: 10pt;')
                 | #{condition2Risk}
-            td(style='width:30%')
+            td(style='width:30%;height:60px;vertical-align: middle;')
               p(style='text-indent: 0pt;text-align: left;')
                 br
               p.s10(style='padding-left: 49pt;text-indent: 0pt;text-align: left;font-size: 10pt;')
                 | #{condition2InterpretationText}
-            td(style='width:15%;text-align: center;')
-              img(width='20px' heigth='20pt' src=condition2Icon)
+            td(style='width:15%;height:60px;vertical-align: middle;text-align: center;')
+              img(width='15px' heigth='20px' src=condition2Icon)
                 br
               p(style='padding-left: 54pt;text-indent: 0pt;text-align: left;')
               p.s8 18
-          tr(style='height:52pt; border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#8D737D')
-            td(style='width:25%;')
+          tr(style='height:60px; border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#8D737D')
+            td(style='width:25%;height:60px;vertical-align: middle;')
               p(style='text-indent: 0pt;text-align: left;')
                 br
               p.s10(style='padding-left: 9pt;text-indent: 0pt;text-align: left;font-size: 10pt;')
                 | #{condition3Title}
-            td(style='width:30%;')
+            td(style='width:30%;height:60px;vertical-align: middle;')
               p(style='text-indent: 0pt;text-align: left;')
                 br
               p.s10(style='padding-left: 33pt;text-indent: 0pt;text-align: left;font-size: 10pt;')
                 | #{condition3Risk}
-            td(style='width:30%;')
+            td(style='width:30%;height:60px;vertical-align: middle;')
               p(style='text-indent: 0pt;text-align: left;')
                 br
               p.s10(style='padding-left: 49pt;text-indent: 0pt;text-align: left;font-size: 10pt;')
                 | #{condition3InterpretationText}
-            td(style='width:15%;text-align: center;')
-              img(width='20px' heigth='10pt' src=condition3Icon)
+            td(style='width:15%;height:60px;vertical-align: middle;text-align: center;')
+              //div(style="margin-top:40%;")
+              img(width='12px' heigth='15px' src=condition3Icon)
                 br
               p(style='padding-left: 54pt;text-indent: 0pt;text-align: left;')
               p.s8 13
@@ -503,13 +504,14 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
         br
       br
       p.s13(style='padding-left: 7pt;text-indent: 0pt;line-height: 1pt;text-align: left;')  
-      div(style='margin-top: 10pt; margin-bottom: 35pt;')
-        p.s14(style='padding-top: 1pt;padding-left: 7pt;text-indent: 0pt;text-align: left; width: 48%; margin-top: 10px; border-top: black; border-top-width: 1px; border-top-style: solid; padding-right: 2px; float: left; margin: 2pt;')
+      div(style='position:relative;margin-top: 10pt; margin-bottom: 35pt;')
+        img(style='position:absolute;bottom:-22px; z-index: 99;margin-left: 95px;' width='90px' height='60px' src='./templates/assets/signature.svg')
+        p.s14(style='padding-top: 1pt;padding-left: 7pt;text-indent: 0pt;text-align: left; width: 55%; margin-top: 10px; border-top: black; border-top-width: 1px; border-top-style: solid; padding-right: 2px; float: left; margin: 2pt;')
           | Lab
           | Director
           | Signature
-        p.s14(style='padding-top: 1pt;padding-left: 7pt;text-indent: 0pt;text-align: left; width: 48%; margin-top: 10px; border-top: black; border-top-width: 1px; border-top-style: solid; padding-left: 2px; float: left; margin: 2pt;')
-          | Signature
+        p.s14(style='position: absolute; top:-6px; width: 70%; text-align:right;') #{signDate}
+        p.s14(style='padding-top: 1pt;padding-left: 7pt;text-indent: 0pt;text-align: left; width: 40%; margin-top: 10px; border-top: black; border-top-width: 1px; border-top-style: solid; padding-left: 2px; float: left; margin: 2pt;')
           | Date
       if !overallStatus
         br
@@ -555,11 +557,11 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
               td(style='width:120px')
                 img(width='101' height='35' src='./templates/assets/juno-logo-purple.svg')
               td(style='width:149pt;border-right-style:solid;border-right-width:1pt;border-right-color:#FFFFFF; width: 100px;' bgcolor='#F8F2E6')
-                p.s3(style='padding-top: 3pt;padding-right: 7pt;text-indent: 0pt;line-height: 123%;text-align: left; width: 100px;')
+                p.s3(style='padding-top: 0pt;padding-right: 4pt;text-indent: 0pt;line-height: 11pt;text-align: left; width: 100px;')
                   | Patient Name:
-                p.s3(style='padding-top: 3pt;padding-right: 7pt;text-indent: 0pt;line-height: 123%;text-align: left; width: 100px;')
+                p.s3(style='padding-top: 0pt;padding-right: 4pt;text-indent: 0pt;text-align: left; width: 100px;')
                   | Report date:
-                p.s3(style='padding-top: 3pt;padding-right: 7pt;text-indent: 0pt;line-height: 123%;text-align: left; width: 100px;')
+                p.s3(style='padding-top: 1pt;padding-right: 4pt;text-indent: 0pt;text-align: left; width: 100px;')
                   | Study performed:
               td(style='width:423pt;border-left-style:solid;border-left-width:1pt;border-left-color:#FFFFFF; width: 100px;' bgcolor='#F8F2E6')
                 p.s3(style='padding-left: 3pt;text-indent: 0pt;line-height: 11pt;text-align: left; width: 100px;')
@@ -570,7 +572,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
                   | #{testNameShort}
               td(style='width:423pt;border-left-style:solid;border-left-width:1pt;border-left-color:#FFFFFF')
                 p.s3(style='padding-left: 5pt;text-indent: 0pt;line-height: 11pt;text-align: right;')
-                  span.s15 #{productName}
+                  span.s15 #{resultsForText}
       p(style="height: 5pt;")
       br
       p.s16(style='width:567pt;border-top-style:solid;border-top-width:1pt; border-top-color:#BCBEC0; border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#BCBEC0;padding-top: 2pt;padding-left: 9pt;text-indent: 0pt;text-align: left;')
@@ -740,5 +742,5 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
               td
                 p(style='font-size: 7pt;')  
               td
-                p Page 1 of 2
+                p Page 2 of 2
 
