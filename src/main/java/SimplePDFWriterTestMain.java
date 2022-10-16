@@ -60,11 +60,11 @@ public class SimplePDFWriterTestMain {
 
             SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
             Date date = new Date();
-            String sDate = sdf2.format(date);
+            String signDate = sdf2.format(date);
             String resultsForText = StringUtils.capitalize(statusJson.get("overallCondition").toString().toLowerCase()) + " Result for " + strings.getTestDetails().getTestShortName();
 
             Map<String, Object> obj = new HashMap<>();
-            obj.put("signDate", sDate);
+            obj.put("signDate", signDate);
 
             obj.put("overallCondition", statusJson.get("overallCondition").toString());
             obj.put("patientName", patient.getFirstName() + " " + patient.getLastName());
