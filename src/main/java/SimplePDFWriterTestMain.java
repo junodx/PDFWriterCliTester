@@ -138,7 +138,18 @@ public class SimplePDFWriterTestMain {
             obj.put("screeningMethodText", strings.getStaticText().getScreeningMethods());
             obj.put("disclaimer", strings.getStaticText().getDisclaimer().replaceAll("’", "'"));
             obj.put("hipaaDisclaimer", strings.getStaticText().getHipaaDisclaimer());
-            obj.put("junoFooter", strings.getStaticText().getJunoFooter());
+            obj.put("withSignature", true);
+            obj.put("signatureLink", "https://jdx-static-image-assets.s3.us-east-2.amazonaws.com/signature.svg");
+
+            String junoFooter = strings.getStaticText().getJunoFooter();
+            String junoLabAddress = junoFooter.substring(junoFooter.indexOf(":") + 1, junoFooter.indexOf(";") + 1);
+            String cliaId = junoFooter.substring(junoFooter.indexOf(":", junoFooter.indexOf(junoLabAddress) + 1) + 1, junoFooter.indexOf(";", junoFooter.indexOf(junoLabAddress) + junoFooter.indexOf(";")) + 1);
+            String junoLabDirector = junoFooter.substring(junoFooter.indexOf(":", junoFooter.indexOf(cliaId) + 1) + 1);
+
+            obj.put("junoLabAddress", junoLabAddress);
+            obj.put("cliaId", cliaId);
+            obj.put("junoLabDirector", junoLabDirector);
+
 
             PugConfiguration config = new PugConfiguration();
             config.setMode(Pug4J.Mode.HTML);
