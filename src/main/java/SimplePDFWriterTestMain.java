@@ -11,6 +11,7 @@ import de.neuland.pug4j.template.PugTemplate;
 import java.io.*;
 import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -62,33 +63,46 @@ public class SimplePDFWriterTestMain {
             Date date = new Date();
             String signDate = sdf2.format(date);
             String resultsForText = StringUtils.capitalize(statusJson.get("overallCondition").toString().toLowerCase()) + " Result for " + strings.getTestDetails().getTestShortName();
-
+            String reportType = report.getReportConfiguration().toString();
+            
             Map<String, Object> obj = new HashMap<>();
+            obj.put("withSignature", true);
             obj.put("signDate", signDate);
+            if (strings.getSignatureDetails().getSignatureAssetUrl() != null)
+                obj.put("signatureLink", strings.getSignatureDetails().getSignatureAssetUrl());
 
             obj.put("overallCondition", statusJson.get("overallCondition").toString());
             obj.put("patientName", patient.getFirstName() + " " + patient.getLastName());
             obj.put("patientDob", patient.getDateOfBirth());
             obj.put("patientEmail", patient.getEmail());
-            obj.put("patientLmpDate", sdf.format(lmp));
-            obj.put("patientSampleCollectionDate", collection != null ? sdf.format(collection) : "");
-            obj.put("patientGA", strings.getPpvDetails().getPpvPatientGA());
-            obj.put("patientGestationType", "Singleton");
-            obj.put("reportDate", sdf.format(signedOutAt));
+            if (lmp != null)
+                obj.put("patientLmpDate", sdf2.format(lmp));
+            if (collection != null)
+                obj.put("patientSampleCollectionDate", collection != null ? sdf2.format(collection) : "");
+            obj.put("patientGA", report.getPatientGAAtCollection());
+            // obj.put("patientGestationType", "Singleton");
+            if (signedOutAt != null)
+                obj.put("reportDate", sdf2.format(signedOutAt));
+            else {
+                if (report.getReportDateTime() != null)
+                    obj.put("reportDate", sdf2.format(report.getReportDateTime().getTime()));
+                else
+                    obj.put("reportDate", sdf2.format(Calendar.getInstance().getTime()));
+            }
 
             obj.put("resultsForText", resultsForText);
             obj.put("testNameShort", strings.getTestDetails().getTestShortName());
             obj.put("testNameExtended", strings.getTestDetails().getTestName());
             obj.put("testName", strings.getTestDetails().getTestName());
             obj.put("testDescription", strings.getTestDetails().getTestDescription());
-            
+
             obj.put("overallResultText", strings.getOverallResults().getOverallResultText());
             obj.put("overallResultSVGPdf", strings.getOverallResults().getOverallResultSVGPdf());
             obj.put("fetalSexText", strings.getOverallResults().getOverallResultFetalSexText());
             obj.put("overallFetalSexSVGPdf", strings.getOverallResults().getOverallFetalSexSVGPdf());
             obj.put("fetalFractionText", strings.getOverallResults().getOverallResultFetalFractionText());
             obj.put("overallFetalFractionSVGPdf", strings.getOverallResults().getOverallFetalFractionSVGPdf());
-            
+
             obj.put("overallResultsSummary", strings.getOverallResults().getOverallResultsSummary());
             obj.put("overallResult", status);
 
@@ -97,6 +111,7 @@ public class SimplePDFWriterTestMain {
             obj.put("ppvPatientAge", strings.getPpvDetails().getPpvPatientAge());
             obj.put("ppvPatientGA", strings.getPpvDetails().getPpvPatientGA());
             obj.put("ppvExplanation", strings.getPpvDetails().getPpvExplanation());
+            obj.put("labNotes", report.getNotes());
 
             // Conditions section
             int count = 1;
@@ -107,10 +122,14 @@ public class SimplePDFWriterTestMain {
                 obj.put("condition" + count + "Icon", condition.getIcon());
                 count++;
             }
-            
-            //obj.put("testNameExtended", "ABOUT JUNO'S HAZEL™ NON - INVASIVE PRENATAL SCREEN:"); //to-do
+
+            obj.put("SCAIcon", strings.getOverallResults().getOverallResultText().contains("XX")
+                    || strings.getOverallResults().getOverallResultText().contains("YY"));
+
+            // obj.put("testNameExtended", "ABOUT JUNO'S HAZEL™ NON - INVASIVE PRENATAL
+            // SCREEN:"); //to-do
             obj.put("patientDemographics", "PATIENT DEMOGRAPHICS");
-            
+
             // Table Headers
             obj.put("CONDITIONS_EVALUATED_HEADER", "CONDITIONS EVALUATED");
             obj.put("FINAL_TEST_SUMMARY_HEADER", "FINAL RESULTS SUMMARY");
@@ -119,7 +138,8 @@ public class SimplePDFWriterTestMain {
             obj.put("SCREENING_METHODS_HEADER", "SCREENING METHODS");
             obj.put("SCREENING_PERFORMANCE_HEADER", "SCREENING PERFORMANCE");
             obj.put("SCREENING_LIMITATIONS_HEADER", "SCREENING LIMITATIONS");
-            obj.put("SCREENING_REFERENCES_HEADER", "REFERENCES" );
+            obj.put("SCREENING_REFERENCES_HEADER", "REFERENCES");
+            obj.put("LAB_DIRECTOR_COMMENTS", "LAB DIRECTOR COMMENTS");
 
             // table rows static text
             obj.put("RESULT", "Result");
@@ -127,33 +147,36 @@ public class SimplePDFWriterTestMain {
             obj.put("FETAL_FRACTION", "Fetal Fraction");
             obj.put("POST_TEST_RISK", "Post-test risk");
             obj.put("INTERPRETATION", "Interpretation");
-            
+
             /*
-              Results meaning section
-              obj.put("resultsMeaning", strings.getOverallResults().getOverallResultsSummary());
-            */
+             * Results meaning section
+             * obj.put("resultsMeaning",
+             * strings.getOverallResults().getOverallResultsSummary());
+             */
 
             // Static text section
             obj.put("screeningPerformaceText", strings.getStaticText().getScreeningPerformance());
             obj.put("screeningMethodText", strings.getStaticText().getScreeningMethods());
             obj.put("disclaimer", strings.getStaticText().getDisclaimer().replaceAll("’", "'"));
             obj.put("hipaaDisclaimer", strings.getStaticText().getHipaaDisclaimer());
-            obj.put("withSignature", true);
-            obj.put("signatureLink", "https://jdx-static-image-assets.s3.us-east-2.amazonaws.com/signature.svg");
 
             String junoFooter = strings.getStaticText().getJunoFooter();
             String junoLabAddress = junoFooter.substring(junoFooter.indexOf(":") + 1, junoFooter.indexOf(";") + 1);
-            String cliaId = junoFooter.substring(junoFooter.indexOf(":", junoFooter.indexOf(junoLabAddress) + 1) + 1, junoFooter.indexOf(";", junoFooter.indexOf(junoLabAddress) + junoFooter.indexOf(";")) + 1);
-            String junoLabDirector = junoFooter.substring(junoFooter.indexOf(":", junoFooter.indexOf(cliaId) + 1) + 1);
+            String cliaId = junoFooter.substring(junoFooter.indexOf(":", junoFooter.indexOf(junoLabAddress) + 1) + 1,
+                    junoFooter.indexOf(";", junoFooter.indexOf(junoLabAddress) + junoFooter.indexOf(";")) + 1);
+            // String junoLabDirector = junoFooter.substring(junoFooter.indexOf(":",
+            // junoFooter.indexOf(cliaId) + 1) + 1);
 
             obj.put("junoLabAddress", junoLabAddress);
             obj.put("cliaId", cliaId);
-            obj.put("junoLabDirector", junoLabDirector);
-
+            obj.put("junoLabDirector", strings.getSignatureDetails().getSignatoryName());
 
             PugConfiguration config = new PugConfiguration();
             config.setMode(Pug4J.Mode.HTML);
             PugTemplate template = Pug4J.getTemplate("./templates/report.pug");
+            if (reportType == "NIPS_PLUS") {
+                template = Pug4J.getTemplate("./templates/nips_plus_report.pug");
+            }
 
             String html = Pug4J.render(template, obj);
 
@@ -162,7 +185,7 @@ public class SimplePDFWriterTestMain {
 
             System.out.println("HTML: " + mapper.writeValueAsString(html));
             
-            HtmlConverter.convertToPdf(html, new FileOutputStream(obj.get("patientName") + ".pdf"));
+            HtmlConverter.convertToPdf(html, new FileOutputStream(obj.get("patientName") + "_" + report.getId() + ".pdf"));
         } catch (URISyntaxException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {

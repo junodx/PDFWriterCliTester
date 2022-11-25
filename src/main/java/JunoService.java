@@ -149,7 +149,7 @@ public class JunoService {
 
     public static TestReport customJsonParserFroTestReportFromNode(JsonNode node) throws JdxServiceException, ParseException {
         ObjectMapper mapper = new ObjectMapper();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
         try {
             if (!node.isArray()) {
                 TestReport report = new TestReport();
@@ -232,6 +232,8 @@ public class JunoService {
                     report.setReportType(ReportType.valueOf(node.get("reportType").textValue()));
                 if (node.has("sampleNumber"))
                     report.setSampleNumber(node.get("sampleNumber").textValue());
+                if (node.has("notes"))
+                    report.setNotes(node.get("notes").textValue());
                 if (node.has("deliveredToProvider"))
                     report.setDeliveredToProvider(node.get("deliveredToProvider").booleanValue());
                 if (node.has("deliveredToPatient"))

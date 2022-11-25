@@ -69,7 +69,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
       font-style: normal;
       font-weight: bold;
       text-decoration: none;
-      font-size: 12pt;
+      font-size: 10pt;
       }
       .s8 {
       color: #231F20;
@@ -93,7 +93,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
       font-style: normal;
       font-weight: normal;
       text-decoration: none;
-      font-size: 9pt;
+      font-size: 7.5pt;
       }
       .s11 {
       color: #8A727D;
@@ -162,7 +162,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
       font-style: normal;
       font-weight: bold;
       text-decoration: none;
-      font-size: 12pt;
+      font-size: 10pt;
       }
       .s19 {
       color: #FFF;
@@ -170,7 +170,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
       font-style: normal;
       font-weight: normal;
       text-decoration: none;
-      font-size: 12pt;
+      font-size: 10pt;
       }
       .s20 {
       color: #8A727D;
@@ -191,13 +191,13 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
       margin: 0pt;
       }
       #screenL p {
-        padding-top: 3pt;
+        padding-top: 2pt;
         padding-left: 4pt;
         padding-right: 7pt;
-        padding-bottom: 3pt;
+        padding-bottom: 2pt;
         text-indent: 0pt;
         text-align: justify;
-        font-size: 8pt;
+        font-size: 7.5pt;
       }
       h2 {
       color: #231F20;
@@ -213,7 +213,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
       font-style: normal;
       font-weight: bold;
       text-decoration: none;
-      font-size: 36pt;
+      font-size: 28pt;
       }
       li {
       display: block;
@@ -354,7 +354,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
               p.s8(style='padding-top: 6pt; padding-left: 5pt; text-indent: 0pt;text-align: left; font-weight: bold;') #{FETAL_FRACTION}
           tr(style='height:75pt;')
             td(style='width: 188pt;align-items: left; border-left-style:solid;border-left-width:1pt;border-left-color:#8A727D;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#8A727D; text-align: left;')
-              p.s9(style='padding-left: 5pt;padding-top: 7pt;text-indent: 0pt; text-align: left;')
+              p.s9(SCAIcon = true ? style='padding-left: 5pt;padding-top: 7pt;text-indent: 0pt; text-align: left;font-size: 7pt;' : style='padding-left: 5pt;padding-top: 7pt;text-indent: 0pt; text-align: left;')
                 | #{overallResultText}
               img(width='35px' style="margin-left: 30px;  margin-top: 7pt;" src=overallResultSVGPdf)
             td(style='width:188pt;align-items: left;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#8A727D; text-align: left;')
@@ -376,16 +376,17 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
                   | #{POSITIVE_PREDICTIVE_VALUE_HEADER}
             tr(style='height:73pt')
               td(style='width:109pt;border-left-style:solid;border-left-width:1pt;border-left-color:#8D737D;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#8D737D')
-                p.s21(style='padding-top: 1pt;padding-left: 9pt;text-indent: 0pt;line-height: 41pt;text-align: left;')
-                  | #{ppvPercentage}
-                p.s8(style='padding-left: 9pt;text-indent: 0pt;line-height: 10pt;text-align: left;')
+                if ppvPercentage != 'Unknown'
+                  p.s21(style='padding-top: 1pt;padding-left: 9pt;text-indent: 0pt;line-height: 41pt;text-align: left;')
+                    | #{ppvPercentage}
+                p.s8(style='padding-left: 9pt;text-indent: 0pt;line-height: 10pt;text-align: left;font-size: 8pt;')
                   | Age:
                   | #{ppvPatientAge}
-                p.s8(style='padding-top: 1pt;padding-left: 9pt;text-indent: 0pt;text-align: left;')
+                p.s8(style='padding-top: 1pt;padding-left: 9pt;text-indent: 0pt;text-align: left;font-size: 8pt;')
                   | GA:
                   | #{ppvPatientGA}
               td(style='width:457pt;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#8D737D;border-right-style:solid;border-right-width:1pt;border-right-color:#8D737D')
-                p.s8(style='padding-top: 7pt;padding-left: 16pt;padding-right: 19pt;text-indent: 0pt;text-align: left;')
+                p.s8(style='text-align: justify;padding-top: 7pt;padding-left: 16pt;padding-right: 19pt;text-indent: 0pt;text-align: left;')
                   | #{ppvExplanation}
         p(style='text-indent: 0pt;text-align: left;')
           br
@@ -408,64 +409,90 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
             td(style='width:15%;text-align: center;')
               p(style='text-indent: 0pt;text-align: left;')
                 br
-          tr(style='height:60px;  border-left-color:#8D737D;')
-            td(style='width:25%;height:60px;vertical-align: middle;')
-              p.s10(style='padding-top: 12pt;padding-left: 9pt;text-indent: 0pt;text-align: left;font-size: 10pt;')
+          tr(style='height:40px;  border-left-color:#8D737D;')
+            td(style='width:25%;height:52px;vertical-align: middle;')
+              p.s10(style='padding-top: 12pt;padding-left: 9pt;text-indent: 0pt;text-align: left;font-size: 9pt;')
                 | #{condition1Title}
-            td(style='width:30%;height:60px;vertical-align: middle;')
-              p.s10(style='padding-top: 12pt;padding-left: 33pt;text-indent: 0pt;text-align: left;font-size: 10pt;')
+            td(style='width:30%;height:52px;vertical-align: middle;')
+              p.s10(style='padding-top: 12pt;padding-left: 33pt;text-indent: 0pt;text-align: left;font-size: 9pt;')
                 | #{condition1Risk}
-            td(style='width:30%;height:60px;vertical-align: middle;height:60px;')
-              p.s10(style='padding-top: 12pt;padding-left: 49pt;text-indent: 0pt;text-align: left;font-size: 10pt;')
+            td(style='width:30%;height:52px;vertical-align: middle;')
+              p.s10(style='padding-top: 12pt;padding-left: 49pt;text-indent: 0pt;text-align: left;font-size: 9pt;')
                 | #{condition1InterpretationText}
-            td(style='width:15%;height:60px;vertical-align: middle;text-align:center;border-right-style:solid;border-right-width:1pt;border-right-color:#8D737D')
+            td(style='width:15%;height:52px;vertical-align: middle;text-align:center;border-right-style:solid;border-right-width:1pt;border-right-color:#8D737D')
               img(width='16px' heigth='20px' src=condition1Icon)
                 br
               p(style='padding-left: 54pt;text-indent: 0pt;text-align: left;')
               p.s8 21
-          tr(style='height:100px')
-            td(style='width:25%;height:60px;vertical-align: middle;')
+          tr(style='height:40px')
+            td(style='width:25%;height:52px;vertical-align: middle;')
               p(style='text-indent: 0pt;text-align: left;')
                 br
-              p.s10(style='padding-left: 9pt;text-indent: 0pt;text-align: left; font-size: 10pt;')
+              p.s10(style='padding-left: 9pt;text-indent: 0pt;text-align: left; font-size: 9pt;')
                 | #{condition2Title}
-            td(style='width:30%;height:60px;vertical-align: middle;')
+            td(style='width:30%;height:52px;vertical-align: middle;')
               p(style='text-indent: 0pt;text-align: left;')
                 br
-              p.s10(style='padding-left: 33pt;text-indent: 0pt;text-align: left;font-size: 10pt;')
+              p.s10(style='padding-left: 33pt;text-indent: 0pt;text-align: left;font-size: 9pt;')
                 | #{condition2Risk}
-            td(style='width:30%;height:60px;vertical-align: middle;')
+            td(style='width:30%;height:52px;vertical-align: middle;')
               p(style='text-indent: 0pt;text-align: left;')
                 br
-              p.s10(style='padding-left: 49pt;text-indent: 0pt;text-align: left;font-size: 10pt;')
+              p.s10(style='padding-left: 49pt;text-indent: 0pt;text-align: left;font-size: 9pt;')
                 | #{condition2InterpretationText}
-            td(style='width:15%;height:60px;vertical-align: middle;text-align: center;')
-              img(width='14px' heigth='20px' src=condition2Icon)
+            td(style='width:15%;height:52px;vertical-align: middle;text-align: center;')
+              img(width='10px' heigth='14px' src=condition2Icon)
                 br
               p(style='padding-left: 54pt;text-indent: 0pt;text-align: left;')
               p.s8 18
-          tr(style='height:60px; border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#8D737D')
-            td(style='width:25%;height:60px;vertical-align: middle;')
+          tr(style='height:40px; border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#8D737D')
+            td(style='width:25%;height:52px;vertical-align: middle;')
               p(style='text-indent: 0pt;text-align: left;')
                 br
-              p.s10(style='padding-left: 9pt;text-indent: 0pt;text-align: left;font-size: 10pt;')
+              p.s10(style='padding-left: 9pt;text-indent: 0pt;text-align: left;font-size: 9pt;')
                 | #{condition3Title}
-            td(style='width:30%;height:60px;vertical-align: middle;')
+            td(style='width:30%;height:52px;vertical-align: middle;')
               p(style='text-indent: 0pt;text-align: left;')
                 br
-              p.s10(style='padding-left: 33pt;text-indent: 0pt;text-align: left;font-size: 10pt;')
+              p.s10(style='padding-left: 33pt;text-indent: 0pt;text-align: left;font-size: 9pt;')
                 | #{condition3Risk}
-            td(style='width:30%;height:60px;vertical-align: middle;')
+            td(style='width:30%;height:52px;vertical-align: middle;')
               p(style='text-indent: 0pt;text-align: left;')
                 br
-              p.s10(style='padding-left: 49pt;text-indent: 0pt;text-align: left;font-size: 10pt;')
+              p.s10(style='padding-left: 49pt;text-indent: 0pt;text-align: left;font-size: 9pt;')
                 | #{condition3InterpretationText}
-            td(style='width:15%;height:60px;vertical-align: middle;text-align: center;')
+            td(style='width:15%;height:52px;vertical-align: middle;text-align: center;')
               //div(style="margin-top:40%;")
-              img(width='12px' heigth='15px' src=condition3Icon)
+              img(width='10px' heigth='14px' src=condition3Icon)
                 br
               p(style='padding-left: 54pt;text-indent: 0pt;text-align: left;')
               p.s8 13
+          tr(style='height:40px; border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#8D737D')
+            td(style='width:25%;height:52px;vertical-align: middle;')
+              p(style='text-indent: 0pt;text-align: left;')
+                br
+              p.s10(style='padding-left: 9pt;text-indent: 0pt;text-align: left;font-size: 9pt;')
+                | #{condition4Title}
+            td(style='width:30%;height:52px;vertical-align: middle;')
+              p(style='text-indent: 0pt;text-align: left;')
+                br
+              p.s10(style='padding-left: 33pt;text-indent: 0pt;text-align: left;font-size: 9pt;')
+                | #{condition4Risk}
+            td(style='width:30%;height:52px;vertical-align: middle;')
+              p(style='text-indent: 0pt;text-align: left;')
+                br
+              p.s10(style='padding-left: 49pt;text-indent: 0pt;text-align: left;font-size: 9pt;')
+                | #{condition4InterpretationText}
+            td(style='width:15%;height:52px;vertical-align: middle;text-align: center;')
+              //div(style="margin-top:40%;")
+              if SCAIcon
+                img(style='margin-left: 2px; margin-right: 2px;' width='14px' heigth='18px' src=condition4Icon)
+                  br
+              else
+                img(style='margin-left: 2px; margin-right: 2px;' width='5px' heigth='6px' src=condition4Icon)
+                  br
+              //- p(style='padding-left: 54pt;text-indent: 0pt;text-align: left;')
+              //- p.s8 X
       p(style='text-indent: 0pt;text-align: left;')
         br
       if !overallStatus
@@ -478,23 +505,29 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
                 | #{WHAT_DOES_THIS_RESULT_MEAN_HEADER}
           tr(style='height:56pt')
             td(style='width:567pt;border-left-style:solid;border-left-width:1pt;border-left-color:#8D737D;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#8D737D;border-right-style:solid;border-right-width:1pt;border-right-color:#8D737D')
-              p.s10(style='padding-top: 3.5pt;padding-left: 9pt;text-indent: 0pt;text-align: left;')
+              p.s10(style='padding-top: 3.5pt;padding-bottom: 1.5pt;padding-left: 9pt;text-indent: 0pt;text-align: left;')
                 | #{overallResultsSummary}
       p(style='text-indent: 0pt;text-align: left;')
         br
+      table(style='border-collapse:collapse;margin-left:7.7504pt' cellspacing='0')
+        tbody
+          tr(style='height:19pt')
+            td(style='width:567pt' bgcolor='#8A727D')
+              p.s7(style='padding-top: 1pt;padding-left: 5pt;text-indent: 0pt;text-align: left;')
+                | #{LAB_DIRECTOR_COMMENTS}
+          tr(style='height:56pt')
+            td(style='width:567pt;border-left-style:solid;border-left-width:1pt;border-left-color:#8D737D;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#8D737D;border-right-style:solid;border-right-width:1pt;border-right-color:#8D737D')
+              p.s10(style='padding-top: 3.5pt;padding-bottom: 1.5pt;padding-left: 9pt;text-indent: 0pt;text-align: left;')
+                | #{labNotes}
+              if labNotes == null
+                p.s10(style='padding-top: 3.5pt;padding-bottom: 1.5pt;padding-left: 9pt;text-indent: 0pt;text-align: left;')
+                  br
+                  br
+                  br
+      p(style='text-indent: 0pt;text-align: left;')
+        br
       if !overallStatus
         br
-      table(style='border-collapse:collapse;margin-left:7.5pt' cellspacing='0')
-        tbody
-          tr(style='height:20pt')
-            td(style='width:567pt;border-top-style:solid;border-top-width:1pt; border-top-color:#BCBEC0; border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#BCBEC0')
-              p.s11(style='padding-top: 1pt;text-indent: 0pt;text-align: left;')
-                span.s12
-                  | #{SCREENING_METHODS_HEADER}
-          tr(style='height:33pt')
-            td(style='width:567pt')
-              p.s10(style='padding-top: 3pt;padding-left: 9pt;text-indent: 0pt;line-height: 14pt;text-align: left;')
-                | #{screeningMethodText}
       p(style='text-indent: 0pt;text-align: left;')
         br
         br
@@ -503,7 +536,10 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
         br
         br
         br
-      p.s13(style='padding-left: 7pt; padding-top: 1pt; text-indent: 0pt;line-height: 1pt;text-align: left;')
+      if !ppvPercentage
+        br
+        br
+        p.s13(style='padding-left: 7pt; padding-top: 1pt; text-indent: 0pt;line-height: 1pt;text-align: left;')
       div(style='position:relative;margin-top: 10pt; margin-bottom: 35pt;')
         if withSignature == true
           img(style='position:absolute;bottom:-22px; z-index: 99;margin-left: 95px;' width='90px' height='60px' src=signatureLink)
@@ -516,7 +552,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
         br
         br
       div(style='page-break-inside:avoid;page-break-after:always; border-top: gray; border-top-width: 1px; border-top-style: solid;')
-        table(border='0' cellspacing='0' cellpadding='0' style='width: 100%; padding-top: 16pt;')
+        table(border='0' cellspacing='0' cellpadding='0' style='width: 100%; padding-top: 5pt;')
           tbody
             tr
               td
@@ -532,7 +568,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
                 p
               td
                 img(width='86' height='30' src='https://jdx-static-image-assets.s3.us-east-2.amazonaws.com/juno-logo-purple.svg')
-        table(style='padding-bottom: 16pt; width: 100%;')
+        table(style='width: 100%;')
           tbody
             tr
               td(style='width: 200pt')
@@ -570,67 +606,89 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
                 p.s3(style='padding-left: 5pt;text-indent: 0pt;line-height: 11pt;text-align: right;')
                   span.s15
       p(style="height: 5pt;")
-      br
+      //br
       p.s16(style='width:567pt;border-top-style:solid;border-top-width:1pt; border-top-color:#BCBEC0; border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#BCBEC0;padding-top: 2pt;padding-left: 9pt;text-indent: 0pt;text-align: left;')
         span.h1
-          | #{SCREENING_PERFORMANCE_HEADER}
+          | #{SCREENING_METHODS_HEADER}
       p.s17(style='padding-top: 7pt;padding-left: 18pt;text-indent: 0pt;text-align: left;')
-        | #{screeningPerformaceText}
+        | #{screeningMethodText}
       p(style='text-indent: 0pt;text-align: left;')
         br
+      table(style='border-collapse:collapse;margin-left:7.5pt' cellspacing='0')
+        tbody
+          tr(style='height:20pt')
+            td(style='width:567pt;border-top-style:solid;border-top-width:1pt; border-top-color:#BCBEC0; border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#BCBEC0')
+              p.s11(style='padding-top: 1pt;text-indent: 0pt;text-align: left;')
+                span.s12
+                  | #{SCREENING_PERFORMANCE_HEADER}
+          tr(style='height:33pt')
+            td(style='width:567pt')
+              p.s10(style='padding-top: 3pt;padding-left: 9pt;text-indent: 0pt;line-height: 14pt;text-align: left;')
+                
+                | #{screeningPerformaceText}
       table(style='border-collapse:collapse;margin-left:10.375pt' cellspacing='0')
         tbody
           tr(style='height:21pt')
-            td(style='width:122pt;border-bottom-style:solid;border-bottom-width:6pt;border-bottom-color:#FFFFFF;border-right-style:solid;border-right-width:6pt;border-right-color:#FFFFFF')
+            td(style='width:180pt;border-bottom-style:solid;border-bottom-width:6pt;border-bottom-color:#FFFFFF;border-right-style:solid;border-right-width:6pt;border-right-color:#FFFFFF')
               p(style='text-indent: 0pt;text-align: left;')
                 br
-            td(style='width:223pt;border-top-style:solid;border-top-width:6pt;border-top-color:#FFFFFF;border-left-style:solid;border-left-width:6pt;border-left-color:#FFFFFF;border-bottom-style:solid;border-bottom-width:6pt;border-bottom-color:#FFFFFF;border-right-style:solid;border-right-width:6pt;border-right-color:#FFFFFF' bgcolor='#A08A93')
+            td(style='width:180pt;border-top-style:solid;border-top-width:6pt;border-top-color:#FFFFFF;border-left-style:solid;border-left-width:6pt;border-left-color:#FFFFFF;border-bottom-style:solid;border-bottom-width:6pt;border-bottom-color:#FFFFFF;border-right-style:solid;border-right-width:6pt;border-right-color:#FFFFFF' bgcolor='#A08A93')
               p.s18(style='padding-top: 3pt;padding-left: 8pt;text-indent: 0pt;text-align: left;')
                 | SENSITIVITY
                 | (95% CI)
-            td(style='width:222pt;border-top-style:solid;border-top-width:6pt;border-top-color:#FFFFFF;border-left-style:solid;border-left-width:6pt;border-left-color:#FFFFFF;border-bottom-style:solid;border-bottom-width:6pt;border-bottom-color:#FFFFFF;border-right-style:solid;border-right-width:6pt;border-right-color:#FFFFFF' bgcolor='#BEB0B5')
+            td(style='width:180pt;border-top-style:solid;border-top-width:6pt;border-top-color:#FFFFFF;border-left-style:solid;border-left-width:6pt;border-left-color:#FFFFFF;border-bottom-style:solid;border-bottom-width:6pt;border-bottom-color:#FFFFFF;border-right-style:solid;border-right-width:6pt;border-right-color:#FFFFFF' bgcolor='#BEB0B5')
               p.s18(style='padding-top: 3pt;padding-left: 8pt;text-indent: 0pt;text-align: left;')
                 | SPECIFICITY
                 | (95% CI)
           tr(style='height:21pt')
-            td(style='width:122pt;border-top-style:solid;border-top-width:6pt;border-top-color:#FFFFFF;border-left-style:solid;border-left-width:6pt;border-left-color:#FFFFFF;border-bottom-style:solid;border-bottom-width:6pt;border-bottom-color:#FFFFFF;border-right-style:solid;border-right-width:6pt;border-right-color:#FFFFFF' bgcolor='#8D737D')
+            td(style='width:180pt;border-top-style:solid;border-top-width:6pt;border-top-color:#FFFFFF;border-left-style:solid;border-left-width:6pt;border-left-color:#FFFFFF;border-bottom-style:solid;border-bottom-width:6pt;border-bottom-color:#FFFFFF;border-right-style:solid;border-right-width:6pt;border-right-color:#FFFFFF' bgcolor='#8D737D')
               p.s18(style='padding-top: 3pt;padding-left: 8pt;text-indent: 0pt;text-align: left;')
                 | Trisomy
                 | 21
-            td(style='width:223pt;border-top-style:solid;border-top-width:6pt;border-top-color:#FFFFFF;border-left-style:solid;border-left-width:6pt;border-left-color:#FFFFFF;border-bottom-style:solid;border-bottom-width:6pt;border-bottom-color:#FFFFFF;border-right-style:solid;border-right-width:6pt;border-right-color:#FFFFFF' bgcolor='#A08A93')
+            td(style='width:180pt;border-top-style:solid;border-top-width:6pt;border-top-color:#FFFFFF;border-left-style:solid;border-left-width:6pt;border-left-color:#FFFFFF;border-bottom-style:solid;border-bottom-width:6pt;border-bottom-color:#FFFFFF;border-right-style:solid;border-right-width:6pt;border-right-color:#FFFFFF' bgcolor='#A08A93')
               p.s19(style='padding-top: 3pt;padding-left: 8pt;text-indent: 0pt;text-align: left;')
                 | >99%
                 | (95%-100%)
-            td(style='width:222pt;border-top-style:solid;border-top-width:6pt;border-top-color:#FFFFFF;border-left-style:solid;border-left-width:6pt;border-left-color:#FFFFFF;border-bottom-style:solid;border-bottom-width:6pt;border-bottom-color:#FFFFFF;border-right-style:solid;border-right-width:6pt;border-right-color:#FFFFFF' bgcolor='#BEB0B5')
+            td(style='width:180pt;border-top-style:solid;border-top-width:6pt;border-top-color:#FFFFFF;border-left-style:solid;border-left-width:6pt;border-left-color:#FFFFFF;border-bottom-style:solid;border-bottom-width:6pt;border-bottom-color:#FFFFFF;border-right-style:solid;border-right-width:6pt;border-right-color:#FFFFFF' bgcolor='#BEB0B5')
               p.s19(style='padding-top: 3pt;padding-left: 8pt;text-indent: 0pt;text-align: left;')
                 | >99.9%
                 | (99%-100%)
           tr(style='height:21pt')
-            td(style='width:122pt;border-top-style:solid;border-top-width:6pt;border-top-color:#FFFFFF;border-left-style:solid;border-left-width:6pt;border-left-color:#FFFFFF;border-bottom-style:solid;border-bottom-width:6pt;border-bottom-color:#FFFFFF;border-right-style:solid;border-right-width:6pt;border-right-color:#FFFFFF' bgcolor='#8D737D')
+            td(style='width:180pt;border-top-style:solid;border-top-width:6pt;border-top-color:#FFFFFF;border-left-style:solid;border-left-width:6pt;border-left-color:#FFFFFF;border-bottom-style:solid;border-bottom-width:6pt;border-bottom-color:#FFFFFF;border-right-style:solid;border-right-width:6pt;border-right-color:#FFFFFF' bgcolor='#8D737D')
               p.s18(style='padding-top: 3pt;padding-left: 8pt;text-indent: 0pt;text-align: left;')
                 | Trisomy
                 | 18
-            td(style='width:223pt;border-top-style:solid;border-top-width:6pt;border-top-color:#FFFFFF;border-left-style:solid;border-left-width:6pt;border-left-color:#FFFFFF;border-bottom-style:solid;border-bottom-width:6pt;border-bottom-color:#FFFFFF;border-right-style:solid;border-right-width:6pt;border-right-color:#FFFFFF' bgcolor='#A08A93')
+            td(style='width:180pt;border-top-style:solid;border-top-width:6pt;border-top-color:#FFFFFF;border-left-style:solid;border-left-width:6pt;border-left-color:#FFFFFF;border-bottom-style:solid;border-bottom-width:6pt;border-bottom-color:#FFFFFF;border-right-style:solid;border-right-width:6pt;border-right-color:#FFFFFF' bgcolor='#A08A93')
               p.s19(style='padding-top: 3pt;padding-left: 8pt;text-indent: 0pt;text-align: left;')
                 | >99%
                 | (94%-100%)
-            td(style='width:222pt;border-top-style:solid;border-top-width:6pt;border-top-color:#FFFFFF;border-left-style:solid;border-left-width:6pt;border-left-color:#FFFFFF;border-bottom-style:solid;border-bottom-width:6pt;border-bottom-color:#FFFFFF;border-right-style:solid;border-right-width:6pt;border-right-color:#FFFFFF' bgcolor='#BEB0B5')
+            td(style='width:180pt;border-top-style:solid;border-top-width:6pt;border-top-color:#FFFFFF;border-left-style:solid;border-left-width:6pt;border-left-color:#FFFFFF;border-bottom-style:solid;border-bottom-width:6pt;border-bottom-color:#FFFFFF;border-right-style:solid;border-right-width:6pt;border-right-color:#FFFFFF' bgcolor='#BEB0B5')
               p.s19(style='padding-top: 3pt;padding-left: 8pt;text-indent: 0pt;text-align: left;')
                 | >99.9%
                 | (99%-100%)
           tr(style='height:21pt')
-            td(style='width:122pt;border-top-style:solid;border-top-width:6pt;border-top-color:#FFFFFF;border-left-style:solid;border-left-width:6pt;border-left-color:#FFFFFF;border-bottom-style:solid;border-bottom-width:6pt;border-bottom-color:#FFFFFF;border-right-style:solid;border-right-width:6pt;border-right-color:#FFFFFF' bgcolor='#8D737D')
+            td(style='width:180pt;border-top-style:solid;border-top-width:6pt;border-top-color:#FFFFFF;border-left-style:solid;border-left-width:6pt;border-left-color:#FFFFFF;border-bottom-style:solid;border-bottom-width:6pt;border-bottom-color:#FFFFFF;border-right-style:solid;border-right-width:6pt;border-right-color:#FFFFFF' bgcolor='#8D737D')
               p.s18(style='padding-top: 3pt;padding-left: 8pt;text-indent: 0pt;text-align: left;')
                 | Trisomy
                 | 13
-            td(style='width:223pt;border-top-style:solid;border-top-width:6pt;border-top-color:#FFFFFF;border-left-style:solid;border-left-width:6pt;border-left-color:#FFFFFF;border-bottom-style:solid;border-bottom-width:6pt;border-bottom-color:#FFFFFF;border-right-style:solid;border-right-width:6pt;border-right-color:#FFFFFF' bgcolor='#A08A93')
+            td(style='width:180pt;border-top-style:solid;border-top-width:6pt;border-top-color:#FFFFFF;border-left-style:solid;border-left-width:6pt;border-left-color:#FFFFFF;border-bottom-style:solid;border-bottom-width:6pt;border-bottom-color:#FFFFFF;border-right-style:solid;border-right-width:6pt;border-right-color:#FFFFFF' bgcolor='#A08A93')
               p.s19(style='padding-top: 3pt;padding-left: 8pt;text-indent: 0pt;text-align: left;')
                 | >99%
                 | (79%-100%)
-            td(style='width:222pt;border-top-style:solid;border-top-width:6pt;border-top-color:#FFFFFF;border-left-style:solid;border-left-width:6pt;border-left-color:#FFFFFF;border-bottom-style:solid;border-bottom-width:6pt;border-bottom-color:#FFFFFF;border-right-style:solid;border-right-width:6pt;border-right-color:#FFFFFF' bgcolor='#BEB0B5')
+            td(style='width:180pt;border-top-style:solid;border-top-width:6pt;border-top-color:#FFFFFF;border-left-style:solid;border-left-width:6pt;border-left-color:#FFFFFF;border-bottom-style:solid;border-bottom-width:6pt;border-bottom-color:#FFFFFF;border-right-style:solid;border-right-width:6pt;border-right-color:#FFFFFF' bgcolor='#BEB0B5')
               p.s19(style='padding-top: 3pt;padding-left: 8pt;text-indent: 0pt;text-align: left;')
                 | >99.9%
                 | (99%-100%)
+          tr(style='height:21pt')
+            td(style='width:180pt;border-top-style:solid;border-top-width:6pt;border-top-color:#FFFFFF;border-left-style:solid;border-left-width:6pt;border-left-color:#FFFFFF;border-bottom-style:solid;border-bottom-width:6pt;border-bottom-color:#FFFFFF;border-right-style:solid;border-right-width:6pt;border-right-color:#FFFFFF' bgcolor='#8D737D')
+              p.s18(style='padding-top: 3pt;padding-left: 8pt;text-indent: 0pt;text-align: left;')
+                | Sex chromosome aneuploidy
+            td(style='width:180pt;border-top-style:solid;border-top-width:6pt;border-top-color:#FFFFFF;border-left-style:solid;border-left-width:6pt;border-left-color:#FFFFFF;border-bottom-style:solid;border-bottom-width:6pt;border-bottom-color:#FFFFFF;border-right-style:solid;border-right-width:6pt;border-right-color:#FFFFFF' bgcolor='#A08A93')
+              p.s19(style='padding-top: 3pt;padding-left: 8pt;text-indent: 0pt;text-align: left;')
+                | Performance Data TBD
+            td(style='width:180pt;border-top-style:solid;border-top-width:6pt;border-top-color:#FFFFFF;border-left-style:solid;border-left-width:6pt;border-left-color:#FFFFFF;border-bottom-style:solid;border-bottom-width:6pt;border-bottom-color:#FFFFFF;border-right-style:solid;border-right-width:6pt;border-right-color:#FFFFFF' bgcolor='#BEB0B5')
+              p.s19(style='padding-top: 3pt;padding-left: 8pt;text-indent: 0pt;text-align: left;')
+                | Performance Data TBD
       //p(style='text-indent: 0pt;text-align: left;')
         br
       //br
@@ -729,7 +787,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
                 p
               td
                 img(width='86' height='30' src='https://jdx-static-image-assets.s3.us-east-2.amazonaws.com/juno-logo-purple.svg')
-        table(style='padding-bottom: 16pt; width: 100%;')
+        table(style='padding-bottom: 10pt; width: 100%;')
           tbody
             tr
               td(style='width: 200pt')
