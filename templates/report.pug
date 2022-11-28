@@ -93,7 +93,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
       font-style: normal;
       font-weight: normal;
       text-decoration: none;
-      font-size: 9pt;
+      font-size: 7.5pt;
       }
       .s11 {
       color: #8A727D;
@@ -162,7 +162,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
       font-style: normal;
       font-weight: bold;
       text-decoration: none;
-      font-size: 12pt;
+      font-size: 10pt;
       }
       .s19 {
       color: #FFF;
@@ -191,13 +191,13 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
       margin: 0pt;
       }
       #screenL p {
-        padding-top: 3pt;
+        padding-top: 2pt;
         padding-left: 4pt;
         padding-right: 7pt;
-        padding-bottom: 3pt;
+        padding-bottom: 2pt;
         text-indent: 0pt;
         text-align: justify;
-        font-size: 8pt;
+        font-size: 7.5pt;
       }
       h2 {
       color: #231F20;
@@ -484,17 +484,21 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
         br
       if !overallStatus
         br
-      table(style='border-collapse:collapse;margin-left:7.5pt' cellspacing='0')
+      table(style='border-collapse:collapse;margin-left:7.7504pt' cellspacing='0')
         tbody
-          tr(style='height:20pt')
-            td(style='width:567pt;border-top-style:solid;border-top-width:1pt; border-top-color:#BCBEC0; border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#BCBEC0')
-              p.s11(style='padding-top: 1pt;text-indent: 0pt;text-align: left;')
-                span.s12
-                  | #{SCREENING_METHODS_HEADER}
-          tr(style='height:33pt')
-            td(style='width:567pt')
-              p.s10(style='padding-top: 3pt;padding-left: 9pt;text-indent: 0pt;line-height: 14pt;text-align: left;')
-                | #{screeningMethodText}
+          tr(style='height:19pt')
+            td(style='width:567pt' bgcolor='#8A727D')
+              p.s7(style='padding-top: 1pt;padding-left: 5pt;text-indent: 0pt;text-align: left;')
+                | #{LAB_DIRECTOR_COMMENTS}
+          tr(style='height:56pt')
+            td(style='width:567pt;border-left-style:solid;border-left-width:1pt;border-left-color:#8D737D;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#8D737D;border-right-style:solid;border-right-width:1pt;border-right-color:#8D737D')
+              p.s10(style='padding-top: 3.5pt;padding-bottom: 1.5pt;padding-left: 9pt;text-indent: 0pt;text-align: left;')
+                | #{labNotes}
+              if labNotes == null
+                p.s10(style='padding-top: 3.5pt;padding-bottom: 1.5pt;padding-left: 9pt;text-indent: 0pt;text-align: left;')
+                  br
+                  br
+                  br
       p(style='text-indent: 0pt;text-align: left;')
         br
         br
@@ -532,7 +536,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
                 p
               td
                 img(width='86' height='30' src='https://jdx-static-image-assets.s3.us-east-2.amazonaws.com/juno-logo-purple.svg')
-        table(style='padding-bottom: 16pt; width: 100%;')
+        table(style='width: 100%;')
           tbody
             tr
               td(style='width: 200pt')
@@ -570,14 +574,25 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
                 p.s3(style='padding-left: 5pt;text-indent: 0pt;line-height: 11pt;text-align: right;')
                   span.s15
       p(style="height: 5pt;")
-      br
+      //br
       p.s16(style='width:567pt;border-top-style:solid;border-top-width:1pt; border-top-color:#BCBEC0; border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#BCBEC0;padding-top: 2pt;padding-left: 9pt;text-indent: 0pt;text-align: left;')
         span.h1
-          | #{SCREENING_PERFORMANCE_HEADER}
+          | #{SCREENING_METHODS_HEADER}
       p.s17(style='padding-top: 7pt;padding-left: 18pt;text-indent: 0pt;text-align: left;')
-        | #{screeningPerformaceText}
+        | #{screeningMethodText}
       p(style='text-indent: 0pt;text-align: left;')
         br
+      table(style='border-collapse:collapse;margin-left:7.5pt' cellspacing='0')
+        tbody
+          tr(style='height:20pt')
+            td(style='width:567pt;border-top-style:solid;border-top-width:1pt; border-top-color:#BCBEC0; border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#BCBEC0')
+              p.s11(style='padding-top: 1pt;text-indent: 0pt;text-align: left;')
+                span.s12
+                  | #{SCREENING_PERFORMANCE_HEADER}
+          tr(style='height:33pt')
+            td(style='width:567pt')
+              p.s10(style='font-size: 7.5pt;padding-top: 3pt;padding-left: 9pt;text-indent: 0pt;line-height: 14pt;text-align: left;')
+                | #{screeningPerformaceText}
       table(style='border-collapse:collapse;margin-left:10.375pt' cellspacing='0')
         tbody
           tr(style='height:21pt')
@@ -729,7 +744,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
                 p
               td
                 img(width='86' height='30' src='https://jdx-static-image-assets.s3.us-east-2.amazonaws.com/juno-logo-purple.svg')
-        table(style='padding-bottom: 16pt; width: 100%;')
+        table(style='width: 100%;')
           tbody
             tr
               td(style='width: 200pt')
