@@ -485,8 +485,11 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
                 | #{condition4InterpretationText}
             td(style='width:15%;height:52px;vertical-align: middle;text-align: center;')
               //div(style="margin-top:40%;")
-              if SCAIcon
-                img(style='margin-left: 2px; margin-right: 2px;' width='14px' heigth='18px' src=condition4Icon)
+              if SCAIcon == 3
+                img(style='margin-left: 2px; margin-right: 2px;' width='16px' heigth='20px' src=condition4Icon)
+                  br
+              if SCAIcon == 2
+                img(style='margin-left: 2px; margin-right: 2px;' width='14px' heigth='18px' src="./templates/assets/xy.svg")
                   br
               else
                 img(style='margin-left: 2px; margin-right: 2px;' width='5px' heigth='6px' src=condition4Icon)

@@ -11,7 +11,7 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <rootPath>/Users/jonathanmckinney/IdeaProjects/</rootPath>
+        <rootPath>E:/bnma/jdx-platform-api/target</rootPath>
     </properties>
 
     <dependencyManagement>
@@ -62,7 +62,7 @@
             <artifactId>api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>system</scope>
-            <systemPath>${rootPath}junodx/api/target/api-0.0.1-SNAPSHOT-client.jar</systemPath>
+            <systemPath>${rootPath}/api-0.0.1-SNAPSHOT-client.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>org.json</groupId>

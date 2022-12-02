@@ -123,8 +123,11 @@ public class SimplePDFWriterTestMain {
                 count++;
             }
 
-            obj.put("SCAIcon", strings.getOverallResults().getOverallResultText().contains("XX")
-                    || strings.getOverallResults().getOverallResultText().contains("YY"));
+            if(obj.containsKey("condition4Icon")) {
+                String[] scaIconLinkArray = obj.get("condition4Icon").toString().split("/");
+                int scaChromoLength = scaIconLinkArray[scaIconLinkArray.length-1].split("\\.")[0].length();
+                obj.put("SCAIcon", scaChromoLength);
+            }
 
             // obj.put("testNameExtended", "ABOUT JUNO'S HAZEL™ NON - INVASIVE PRENATAL
             // SCREEN:"); //to-do
