@@ -25,7 +25,6 @@ import com.itextpdf.html2pdf.HtmlConverter;
 
 public class SimplePDFWriterTestMain {
 
-
     public static void main(String[] args) throws DocumentException, IOException {
         System.out.println("Your Command Line arguments are:"); // loop through all arguments and print it to the user
         for (String str : args) {
@@ -39,33 +38,37 @@ public class SimplePDFWriterTestMain {
         try {
             TestReport report = junoService.getTestReportForPatient(args[0]);
 
-            if(report == null)
+            if (report == null)
                 return;
 
             NIPSReportStrings strings = (NIPSReportStrings) report.getResultData().getStrings();
 
             User patient = report.getPatient();
-            if(patient == null) {
+            if (patient == null) {
                 System.err.println("Cannot find patient details in test report");
                 return;
             }
-            
+
             RawData status = report.getResultData().getData();
             JSONObject statusJson = new JSONObject(status);
-
             Date signedOutAt = report.getSignoutDetails().getSignedOutAt().getTime();
             Date lmp = patient.getPatientDetails().getMedicalDetails().getLmpDate().getTime();
             Date collection = null;
-            if(report.getSampleCollectionTimestamp() != null)
+            if (report.getSampleCollectionTimestamp() != null)
                 collection = report.getSampleCollectionTimestamp().getTime();
 
             SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
             Date date = new Date();
             String signDate = sdf2.format(date);
-            String resultsForText = StringUtils.capitalize(statusJson.get("overallCondition").toString().toLowerCase()) + " Result for " + strings.getTestDetails().getTestShortName();
+            String resultsForText = StringUtils.capitalize(statusJson.get("overallCondition").toString().toLowerCase())
+                    + " Result for " + strings.getTestDetails().getTestShortName();
             String reportType = report.getReportConfiguration().toString();
-            
+
             Map<String, Object> obj = new HashMap<>();
+
+            Integer numberOfFetuses = patient.getPatientDetails().getMedicalDetails().getNumberOfFetuses();
+            System.out.println(patient.getPatientDetails().getMedicalDetails().getNumberOfFetuses());
+            obj.put("numberOfFetuses", numberOfFetuses);
             obj.put("withSignature", true);
             obj.put("signDate", signDate);
             if (strings.getSignatureDetails().getSignatureAssetUrl() != null)
@@ -123,9 +126,9 @@ public class SimplePDFWriterTestMain {
                 count++;
             }
 
-            if(obj.containsKey("condition4Icon")) {
+            if (obj.containsKey("condition4Icon")) {
                 String[] scaIconLinkArray = obj.get("condition4Icon").toString().split("/");
-                int scaChromoLength = scaIconLinkArray[scaIconLinkArray.length-1].split("\\.")[0].length();
+                int scaChromoLength = scaIconLinkArray[scaIconLinkArray.length - 1].split("\\.")[0].length();
                 obj.put("SCAIcon", scaChromoLength);
             }
 
@@ -136,13 +139,25 @@ public class SimplePDFWriterTestMain {
             // Table Headers
             obj.put("CONDITIONS_EVALUATED_HEADER", "CONDITIONS EVALUATED");
             obj.put("FINAL_TEST_SUMMARY_HEADER", "FINAL RESULTS SUMMARY");
-            obj.put("POSITIVE_PREDICTIVE_VALUE_HEADER", "POSITIVE PREDICTIVE VALUE");
             obj.put("WHAT_DOES_THIS_RESULT_MEAN_HEADER", "WHAT DOES THIS RESULT MEAN?");
             obj.put("SCREENING_METHODS_HEADER", "SCREENING METHODS");
             obj.put("SCREENING_PERFORMANCE_HEADER", "SCREENING PERFORMANCE");
             obj.put("SCREENING_LIMITATIONS_HEADER", "SCREENING LIMITATIONS");
             obj.put("SCREENING_REFERENCES_HEADER", "REFERENCES");
             obj.put("LAB_DIRECTOR_COMMENTS", "LAB DIRECTOR COMMENTS");
+
+            Boolean t13Call = statusJson.getJSONObject("t13").get("call").toString() == "POSITIVE";
+            Boolean t18Call = statusJson.getJSONObject("t18").get("call").toString() == "POSITIVE";
+            Boolean t21Call = statusJson.getJSONObject("t21").get("call").toString() == "POSITIVE";
+
+            Boolean scaCall = false;
+            if (reportType == "NIPS_PLUS") {
+                scaCall = statusJson.getJSONObject("sca").get("scaCall").toString() == "POSITIVE";
+            }
+
+            String ppvHeader = t13Call || t21Call || t18Call ? "POSITIVE PREDICTIVE VALUE"
+                    : scaCall ? "SEX CHROMOSOME ANEUPLOIDY RISK ASSESSMENT" : "POSITIVE PREDICTIVE VALUE";
+            obj.put("POSITIVE_PREDICTIVE_VALUE_HEADER", ppvHeader);
 
             // table rows static text
             obj.put("RESULT", "Result");
@@ -187,25 +202,27 @@ public class SimplePDFWriterTestMain {
             html = html.replace("[screeningLimitations]", screeningLimitations);
 
             System.out.println("HTML: " + mapper.writeValueAsString(html));
-            
-            HtmlConverter.convertToPdf(html, new FileOutputStream(obj.get("patientName") + "_" + report.getId() + ".pdf"));
+
+            HtmlConverter.convertToPdf(html,
+                    new FileOutputStream(obj.get("patientName") + "_" + report.getId() + ".pdf"));
         } catch (URISyntaxException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        //this.fileUrl = awsClient.uploadFile(obj.get("patientName")+".pdf");
+        // this.fileUrl = awsClient.uploadFile(obj.get("patientName")+".pdf");
     }
 
     public static UrlClientConnection getJunoConnectionFromConfiguration() {
-        Properties props = new Properties();;
+        Properties props = new Properties();
         InputStream inStream;
         String applicationConfigurationFileName = "application.properties";
 
         UrlClientConnection connection = new UrlClientConnection();
         try {
-            inStream = SimplePDFWriterTestMain.class.getClassLoader().getResourceAsStream(applicationConfigurationFileName);
+            inStream = SimplePDFWriterTestMain.class.getClassLoader()
+                    .getResourceAsStream(applicationConfigurationFileName);
             if (inStream != null) {
                 props.load(inStream);
 

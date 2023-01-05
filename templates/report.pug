@@ -314,15 +314,18 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
                 p.s3(style='padding-left: 4pt;text-indent: 0pt;text-align: left;') LMP:
                 p.s3(style='padding-left: 4pt;text-indent: 0pt;text-align: left;') Sample collection date:
                 p.s3(style='padding-left: 4pt;text-indent: 0pt;text-align: left;') GA at sample collection:
+                p.s3(style='padding-left: 4pt;text-indent: 0pt;text-align: left;') Number of Gestations:
               td(style='width:51pt' bgcolor='#F8F2E6')
                 //p(style='text-indent: 0pt;text-align: left;')
                   br
                 p.s3(style='padding-left: 3pt;text-indent: 0pt;text-align: left;')
-                  | #{patientLmpDate}
+                  | #{patientLmpDate ? patientLmpDate : "N/A"}
                 p.s3(style='padding-left: 3pt;text-indent: 0pt;text-align: left;')
-                  | #{patientSampleCollectionDate}
+                  | #{patientSampleCollectionDate ? patientSampleCollectionDate : "N/A"}
                 p.s3(style='padding-left: 3pt;text-indent: 0pt;text-align: left;')
-                  | #{patientGA}
+                  | #{patientGA ? patientGA : "N/A"}
+                p.s3(style='padding-left: 3pt;text-indent: 0pt;text-align: left;')
+                  | #{numberOfFetuses}
         table(style='border-collapse:collapse; float: left; width: 44%; margin: 1px;' cellspacing='0')
           tbody
             tr(style='height:15pt')
@@ -544,7 +547,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
               td
                 p(style='font-size: 7pt;color: #8A727D;')  #{testName}
               td
-                p(style='font-size: 7pt;')  
+                p(style='font-size: 7pt;')
               td
                 p Page 1 of 2
       p(style='text-indent: 0pt;text-align: left;')
@@ -719,7 +722,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
       p(style='text-indent: 0pt;text-align: left;')
         br
       h2(style='padding-left: 16pt;text-indent: 0pt;text-align: left;')
-        | Disclaimer: 
+        | Disclaimer:
         span.p #{disclaimer}
       p(style='text-indent: 0pt;text-align: left;')
         br
@@ -752,7 +755,6 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
               td
                 p(style='font-size: 7pt;color: #8A727D;')  #{testName}
               td
-                p(style='font-size: 7pt;')  
+                p(style='font-size: 7pt;')
               td
                 p Page 2 of 2
-

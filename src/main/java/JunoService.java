@@ -73,27 +73,28 @@ public class JunoService {
         }
     }
 
-
-    protected void getAccessToken() throws IOException, URISyntaxException, InterruptedException, HttpClientAccessException {
+    protected void getAccessToken()
+            throws IOException, URISyntaxException, InterruptedException, HttpClientAccessException {
         ClientCredentialsPayload creds = new ClientCredentialsPayload();
         creds.setClientId(this.connection.getClientId());
         creds.setClientSecret(this.connection.getClientSecret());
 
-        String tokenPayload = httpSend(this.connection.getUrl() + "/oauth2/token", "", mapper.writeValueAsString(creds));
+        String tokenPayload = httpSend(this.connection.getUrl() + "/oauth2/token", "",
+                mapper.writeValueAsString(creds));
         System.out.println("URL is " + this.connection.getUrl() + "/oauth2/token" + " Payload is " + tokenPayload);
 
         OAuth2TokenDTO token = mapper.readValue(tokenPayload, OAuth2TokenDTO.class);
 
-        if(token != null)
+        if (token != null)
             this.accessToken = token;
     }
 
-
-    public String httpSend(String uri, String accessToken, Object body) throws URISyntaxException, IOException, InterruptedException {
+    public String httpSend(String uri, String accessToken, Object body)
+            throws URISyntaxException, IOException, InterruptedException {
         HttpRequest httpRequest;
-        if(body != null) {
+        if (body != null) {
             String bodyString = "";
-            if(body instanceof String)
+            if (body instanceof String)
                 bodyString = body.toString();
             else
                 bodyString = mapper.writeValueAsString(body);
@@ -119,18 +120,21 @@ public class JunoService {
                 .build()
                 .send(httpRequest, HttpResponse.BodyHandlers.ofString());
 
-        if(response.statusCode() == 200)
+        if (response.statusCode() == 200)
             return response.body();
         else
-            throw new HttpClientAccessException("Error occurred calling Juno API " + response.statusCode() + " : " + response.body() + " ");
+            throw new HttpClientAccessException(
+                    "Error occurred calling Juno API " + response.statusCode() + " : " + response.body() + " ");
     }
 
-    public TestReport getTestReportForPatient(String reportId) throws URISyntaxException, IOException, InterruptedException {
+    public TestReport getTestReportForPatient(String reportId)
+            throws URISyntaxException, IOException, InterruptedException {
         String queryString = reportId + "?target=PROVIDER&withstrings=true";
-        String reportQueryPayload = httpSend(this.connection.getUrl() + "/labs/reports/" + queryString, accessToken.getAccessToken(), null);
+        String reportQueryPayload = httpSend(this.connection.getUrl() + "/labs/reports/" + queryString,
+                accessToken.getAccessToken(), null);
         try {
             return JunoService.customJsonParserForTestReport(reportQueryPayload);
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -147,14 +151,17 @@ public class JunoService {
         }
     }
 
-    public static TestReport customJsonParserFroTestReportFromNode(JsonNode node) throws JdxServiceException, ParseException {
+    public static TestReport customJsonParserFroTestReportFromNode(JsonNode node)
+            throws JdxServiceException, ParseException {
         ObjectMapper mapper = new ObjectMapper();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
         try {
             if (!node.isArray()) {
+                System.out.println(">>>>>>> node " + node);
                 TestReport report = new TestReport();
                 if (node.has("reportConfiguration")) {
-                    report.setReportConfiguration(ReportConfiguration.valueOf(node.get("reportConfiguration").textValue()));
+                    report.setReportConfiguration(
+                            ReportConfiguration.valueOf(node.get("reportConfiguration").textValue()));
                     String estAvailAt = node.get("estimatedToBeAvailableAt").textValue();
                     if (estAvailAt != null) {
                         Date date = sdf.parse(estAvailAt);
@@ -187,7 +194,8 @@ public class JunoService {
                     report.setPatient(mapper.readValue(node.get("patient").toString(), User.class));
 
                 if (node.has("patientGAAtCollectionTimestamp"))
-                    report.setPatientGAAtCollectionTimestamp(node.get("patientGAAtCollectionTimestamp").numberValue().floatValue());
+                    report.setPatientGAAtCollectionTimestamp(
+                            node.get("patientGAAtCollectionTimestamp").numberValue().floatValue());
                 if (node.has("orderNumber"))
                     report.setOrderNumber(node.get("orderNumber").textValue());
                 if (node.has("orderId"))
@@ -287,7 +295,8 @@ public class JunoService {
                                             results.setRawData(mapper.readValue(d.toString(), NIPSPlusRawData.class));
                                             break;
                                         case NIPS_ADVANCED:
-                                            results.setRawData(mapper.readValue(d.toString(), NIPSAdvancedRawData.class));
+                                            results.setRawData(
+                                                    mapper.readValue(d.toString(), NIPSAdvancedRawData.class));
                                             break;
                                     }
                                 }
@@ -322,4 +331,3 @@ public class JunoService {
         return null;
     }
 }
-

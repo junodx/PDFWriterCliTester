@@ -314,6 +314,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
                 p.s3(style='padding-left: 4pt;text-indent: 0pt;text-align: left;') LMP:
                 p.s3(style='padding-left: 4pt;text-indent: 0pt;text-align: left;') Sample collection date:
                 p.s3(style='padding-left: 4pt;text-indent: 0pt;text-align: left;') GA at sample collection:
+                p.s3(style='padding-left: 4pt;text-indent: 0pt;text-align: left;') Number of Gestations:
               td(style='width:51pt' bgcolor='#F8F2E6')
                 //p(style='text-indent: 0pt;text-align: left;')
                   br
@@ -323,6 +324,8 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
                   | #{patientSampleCollectionDate}
                 p.s3(style='padding-left: 3pt;text-indent: 0pt;text-align: left;')
                   | #{patientGA}
+                p.s3(style='padding-left: 3pt;text-indent: 0pt;text-align: left;')
+                  | #{numberOfFetuses}
         table(style='border-collapse:collapse; float: left; width: 44%; margin: 1px;' cellspacing='0')
           tbody
             tr(style='height:15pt')
@@ -354,7 +357,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
               p.s8(style='padding-top: 6pt; padding-left: 5pt; text-indent: 0pt;text-align: left; font-weight: bold;') #{FETAL_FRACTION}
           tr(style='height:75pt;')
             td(style='width: 188pt;align-items: left; border-left-style:solid;border-left-width:1pt;border-left-color:#8A727D;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#8A727D; text-align: left;')
-              p.s9(SCAIcon = true ? style='padding-left: 5pt;padding-top: 7pt;text-indent: 0pt; text-align: left;font-size: 7pt;' : style='padding-left: 5pt;padding-top: 7pt;text-indent: 0pt; text-align: left;')
+              p.s9(SCAIcon = 3 ? style='padding-left: 5pt;padding-top: 7pt;text-indent: 0pt; text-align: left;font-size: 7pt;' : style='padding-left: 5pt;padding-top: 7pt;text-indent: 0pt; text-align: left;')
                 | #{overallResultText}
               img(width='35px' style="margin-left: 30px;  margin-top: 7pt;" src=overallResultSVGPdf)
             td(style='width:188pt;align-items: left;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#8A727D; text-align: left;')
@@ -488,8 +491,8 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
               if SCAIcon == 3
                 img(style='margin-left: 2px; margin-right: 2px;' width='16px' heigth='20px' src=condition4Icon)
                   br
-              if SCAIcon == 2
-                img(style='margin-left: 2px; margin-right: 2px;' width='14px' heigth='18px' src="./templates/assets/xy.svg")
+              else if SCAIcon == 2
+                img(style='margin-left: 2px; margin-right: 2px;' width='14px' heigth='18px' src=condition4Icon)
                   br
               else
                 img(style='margin-left: 2px; margin-right: 2px;' width='5px' heigth='6px' src=condition4Icon)
@@ -577,7 +580,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
               td
                 p(style='font-size: 7pt;color: #8A727D;')  #{testName}
               td
-                p(style='font-size: 7pt;')  
+                p(style='font-size: 7pt;')
               td
                 p Page 1 of 2
       p(style='text-indent: 0pt;text-align: left;')
@@ -625,7 +628,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
           tr(style='height:33pt')
             td(style='width:567pt')
               p.s10(style='padding-top: 3pt;padding-left: 9pt;text-indent: 0pt;line-height: 14pt;text-align: left;')
-                
+
                 | #{screeningPerformaceText}
       table(style='border-collapse:collapse;margin-left:10.375pt' cellspacing='0')
         tbody
@@ -763,7 +766,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
       p(style='text-indent: 0pt;text-align: left;')
         br
       h2(style='padding-left: 16pt;text-indent: 0pt;text-align: left;')
-        | Disclaimer: 
+        | Disclaimer:
         span.p #{disclaimer}
       p(style='text-indent: 0pt;text-align: left;')
         br
@@ -796,7 +799,6 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
               td
                 p(style='font-size: 7pt;color: #8A727D;')  #{testName}
               td
-                p(style='font-size: 7pt;')  
+                p(style='font-size: 7pt;')
               td
                 p Page 2 of 2
-
