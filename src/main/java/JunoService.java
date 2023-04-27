@@ -1,6 +1,7 @@
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.junodx.api.controllers.lab.actions.TestReportUpdateActions;
@@ -153,12 +154,15 @@ public class JunoService {
 
     public static TestReport customJsonParserFroTestReportFromNode(JsonNode node)
             throws JdxServiceException, ParseException {
-        ObjectMapper mapper = new ObjectMapper();
+        ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+        SimpleDateFormat sdfNoSeconds = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+
         try {
             if (!node.isArray()) {
-                System.out.println(">>>>>>> node " + node);
                 TestReport report = new TestReport();
+                if (node.has("id"))
+                    report.setId(node.get("id").textValue());
                 if (node.has("reportConfiguration")) {
                     report.setReportConfiguration(
                             ReportConfiguration.valueOf(node.get("reportConfiguration").textValue()));
@@ -173,7 +177,7 @@ public class JunoService {
                 if (node.has("sampleCollectionTimestamp")) {
                     String collectionTimestamp = node.get("sampleCollectionTimestamp").textValue();
                     if (collectionTimestamp != null) {
-                        Date date = sdf.parse(collectionTimestamp);
+                        Date date = sdfNoSeconds.parse(collectionTimestamp);
                         Calendar cal = Calendar.getInstance();
                         cal.setTime(date);
                         report.setSampleCollectionTimestamp(cal);
@@ -188,6 +192,15 @@ public class JunoService {
                         report.setFirstAvailableAt(cal);
                     }
                 }
+                if (node.has("pdfLastUpdated")) {
+                    String firstAvailAt = node.get("pdfLastUpdated").textValue();
+                    if (firstAvailAt != null) {
+                        Date date = sdf.parse(firstAvailAt);
+                        Calendar cal = Calendar.getInstance();
+                        cal.setTime(date);
+                        report.setPdfLastUpdated(cal);
+                    }
+                }
                 if (node.has("signoutDetails"))
                     report.setSignoutDetails(mapper.readValue(node.get("signoutDetails").toString(), Signout.class));
                 if (node.has("patient"))
@@ -200,8 +213,30 @@ public class JunoService {
                     report.setOrderNumber(node.get("orderNumber").textValue());
                 if (node.has("orderId"))
                     report.setOrderId(node.get("orderId").textValue());
-                if (node.has("laboratoryOrderId"))
-                    report.setLaboratoryOrderId(node.get("laboratoryOrderId").textValue());
+                // if (node.has("laboratoryOrderId"))
+                // report.setLaboratoryOrderId(node.get("laboratoryOrderId").textValue());
+                if (node.has("laboratoryOrder")) {
+                    // report.setLaboratoryOrder(mapper.readValue(node.get("laboratoryOrder").toString(),
+                    // LaboratoryOrder.class));
+                    JsonNode labOrderNode = node.get("laboratoryOrder");
+                    if (labOrderNode != null) {
+                        if (labOrderNode.has("id")) {
+                            LaboratoryOrder labOrder = new LaboratoryOrder();
+                            labOrder.setId(labOrder.getId());
+                            report.setLaboratoryOrder(labOrder);
+                        }
+                    }
+                } else if (node.has("laboratoryOrderId")) {
+                    // report.setLaboratoryOrder(mapper.readValue(node.get("laboratoryOrder").toString(),
+                    // LaboratoryOrder.class));
+                    String labOrderId = node.get("laboratoryOrderId").textValue();
+                    if (labOrderId != null) {
+                        LaboratoryOrder labOrder = new LaboratoryOrder();
+                        labOrder.setId(labOrderId);
+                        report.setLaboratoryOrder(labOrder);
+                    }
+                }
+
                 if (node.has("batchRunId"))
                     report.setBatchRunId(node.get("batchRunId").textValue());
                 if (node.has("labId"))
@@ -240,8 +275,6 @@ public class JunoService {
                     report.setReportType(ReportType.valueOf(node.get("reportType").textValue()));
                 if (node.has("sampleNumber"))
                     report.setSampleNumber(node.get("sampleNumber").textValue());
-                if (node.has("notes"))
-                    report.setNotes(node.get("notes").textValue());
                 if (node.has("deliveredToProvider"))
                     report.setDeliveredToProvider(node.get("deliveredToProvider").booleanValue());
                 if (node.has("deliveredToPatient"))
@@ -320,6 +353,8 @@ public class JunoService {
                         }
                     }
                 }
+                if (node.has("notes"))
+                    report.setNotes(node.get("notes").textValue());
                 return report;
             }
 

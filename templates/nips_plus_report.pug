@@ -85,7 +85,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
       font-style: normal;
       font-weight: bold;
       text-decoration: none;
-      font-size: 11pt;
+      font-size: 10pt;
       }
       .s10 {
       color: #231F20;
@@ -319,11 +319,11 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
                 //p(style='text-indent: 0pt;text-align: left;')
                   br
                 p.s3(style='padding-left: 3pt;text-indent: 0pt;text-align: left;')
-                  | #{patientLmpDate}
+                  | #{patientLmpDate ? patientLmpDate : "N/A"}
                 p.s3(style='padding-left: 3pt;text-indent: 0pt;text-align: left;')
-                  | #{patientSampleCollectionDate}
+                  | #{patientSampleCollectionDate ? patientSampleCollectionDate : "N/A"}
                 p.s3(style='padding-left: 3pt;text-indent: 0pt;text-align: left;')
-                  | #{patientGA}
+                  | #{patientGA ? patientGA : "N/A"}
                 p.s3(style='padding-left: 3pt;text-indent: 0pt;text-align: left;')
                   | #{numberOfFetuses}
         table(style='border-collapse:collapse; float: left; width: 44%; margin: 1px;' cellspacing='0')
@@ -355,7 +355,7 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
                 | #{FETAL_SEX}
             td(style='width:188pt;border-right-style:solid;border-right-width:1pt;border-right-color:#8A727D; text-align: left;')
               p.s8(style='padding-top: 6pt; padding-left: 5pt; text-indent: 0pt;text-align: left; font-weight: bold;') #{FETAL_FRACTION}
-          tr(style='height:75pt;')
+          tr(style='height:72pt;')
             td(style='width: 188pt;align-items: left; border-left-style:solid;border-left-width:1pt;border-left-color:#8A727D;border-bottom-style:solid;border-bottom-width:1pt;border-bottom-color:#8A727D; text-align: left;')
               p.s9(SCAIcon = 3 ? style='padding-left: 5pt;padding-top: 7pt;text-indent: 0pt; text-align: left;font-size: 7pt;' : style='padding-left: 5pt;padding-top: 7pt;text-indent: 0pt; text-align: left;')
                 | #{overallResultText}
@@ -628,7 +628,6 @@ html(xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en')
           tr(style='height:33pt')
             td(style='width:567pt')
               p.s10(style='padding-top: 3pt;padding-left: 9pt;text-indent: 0pt;line-height: 14pt;text-align: left;')
-
                 | #{screeningPerformaceText}
       table(style='border-collapse:collapse;margin-left:10.375pt' cellspacing='0')
         tbody

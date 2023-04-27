@@ -1,3 +1,4 @@
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.junodx.api.models.auth.User;
 import com.junodx.api.models.laboratory.TestReport;
 import com.junodx.api.models.laboratory.reports.NIPSReportStrings;
@@ -36,6 +37,7 @@ public class SimplePDFWriterTestMain {
         ObjectMapper mapper = new ObjectMapper();
         JunoService junoService = new JunoService(getJunoConnectionFromConfiguration(), null);
         try {
+
             TestReport report = junoService.getTestReportForPatient(args[0]);
 
             if (report == null)
